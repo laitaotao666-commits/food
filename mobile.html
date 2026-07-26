@@ -1,0 +1,1599 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="color-scheme" content="light">
+  <title>WeChat Food 手机极速版</title>
+  <style>
+    :root{--paper:#f5f0e7;--card:#fffdf8;--ink:#24211c;--muted:#71695e;--line:#d9d0c2;--green:#405f4b;--clay:#9b5940}
+    *{box-sizing:border-box}html{background:var(--paper);-webkit-text-size-adjust:100%}body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.55 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+    header,.controls,main,footer{width:min(720px,calc(100% - 24px));margin-inline:auto}header{padding:28px 0 18px}h1{margin:5px 0 8px;font:500 clamp(2.2rem,12vw,4rem)/1 ui-serif,"Songti SC",serif;letter-spacing:-.05em}.eyebrow{margin:0;color:var(--green);font-size:.72rem;font-weight:800;letter-spacing:.16em}.intro{margin:0;color:var(--muted)}
+    .controls{position:sticky;z-index:5;top:0;display:grid;gap:9px;padding:12px 0;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(12px)}input,select{width:100%;min-height:48px;border:1px solid var(--line);border-radius:14px;background:var(--card);padding:0 14px;color:var(--ink);font:inherit}.count{margin:0;color:var(--muted);font-size:.84rem}
+    main{display:grid;gap:12px;padding:4px 0 40px}article{border:1px solid var(--line);border-radius:18px;background:var(--card);padding:18px;content-visibility:auto;contain-intrinsic-size:250px}article[hidden]{display:none}.meta{display:flex;gap:6px;overflow:auto}.meta span{flex:0 0 auto;border-radius:999px;background:#e7eee7;padding:4px 8px;color:var(--green);font-size:.7rem;font-weight:700}.meta .pending{background:#f3e5df;color:var(--clay)}.meta .checked{background:#e2eee4;color:#2f6842}h2{margin:12px 0 5px;font-size:1.22rem;line-height:1.3}.address{margin:0;color:var(--muted);font-size:.9rem}dl{margin:13px 0;display:grid;gap:8px}dl div{display:grid;grid-template-columns:46px minmax(0,1fr);gap:9px}dt{color:var(--muted);font-size:.82rem}dd{margin:0;font-size:.9rem}a{display:inline-block;border-radius:999px;background:var(--green);padding:9px 13px;color:white;font-size:.84rem;font-weight:700;text-decoration:none}footer{padding:0 0 30px;color:var(--muted);font-size:.78rem}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}} 
+  </style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">WECHAT FOOD · LITE</p>
+    <h1>手机极速版</h1>
+    <p class="intro">156 个地点，只保留文字与地图搜索；不加载封面、高清地图或第三方地图脚本。</p>
+  </header>
+  <section class="controls" aria-label="筛选">
+    <input id="query" type="search" placeholder="搜索店名、地址、类型或推荐" aria-label="搜索攻略">
+    <select id="region" aria-label="选择城市或区域">
+      <option value="">全部城市／区域</option>
+      <option value="澳门">澳门</option><option value="东莞·茶山">东莞·茶山</option><option value="东莞·常平">东莞·常平</option><option value="东莞·大朗">东莞·大朗</option><option value="东莞·大岭山">东莞·大岭山</option><option value="东莞·道滘">东莞·道滘</option><option value="东莞·东城">东莞·东城</option><option value="东莞·莞城">东莞·莞城</option><option value="东莞·厚街">东莞·厚街</option><option value="东莞·虎门">东莞·虎门</option><option value="东莞·寮步">东莞·寮步</option><option value="东莞·南城">东莞·南城</option><option value="东莞·清溪">东莞·清溪</option><option value="东莞·区域待确认">东莞·区域待确认</option><option value="东莞·沙田">东莞·沙田</option><option value="东莞·石碣">东莞·石碣</option><option value="东莞·石龙">东莞·石龙</option><option value="东莞·石排">东莞·石排</option><option value="东莞·松山湖">东莞·松山湖</option><option value="东莞·万江">东莞·万江</option><option value="东莞·长安">东莞·长安</option><option value="东莞·中堂">东莞·中堂</option><option value="佛山">佛山</option><option value="釜山">釜山</option><option value="广州">广州</option><option value="惠州">惠州</option><option value="昆明">昆明</option><option value="拉萨">拉萨</option><option value="汕头">汕头</option><option value="深圳">深圳</option><option value="首尔">首尔</option><option value="顺德">顺德</option><option value="香格里拉">香格里拉</option><option value="延吉">延吉</option><option value="长沙">长沙</option>
+    </select>
+    <p class="count" id="count">显示 156 个地点</p>
+  </section>
+  <main id="list"><article data-region="东莞·南城" data-search="东莞·南城 胜记泰国鸡饭（汇一城店） 南城街道元美东路5号116室附近 正餐／粉面简餐 泰国鸡饭；冬阴功、咖喱炒虾、星洲叻沙、芒果糯米饭">
+      <div class="meta"><span>东莞·南城</span><span>正餐／粉面简餐</span><span class="pending">待确认</span></div>
+      <h2>胜记泰国鸡饭（汇一城店）</h2>
+      <p class="address">南城街道元美东路5号116室附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>泰国鸡饭；冬阴功、咖喱炒虾、星洲叻沙、芒果糯米饭</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E8%83%9C%E8%AE%B0%E6%B3%B0%E5%9B%BD%E9%B8%A1%E9%A5%AD%EF%BC%88%E6%B1%87%E4%B8%80%E5%9F%8E%E5%BA%97%EF%BC%89%20%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E5%85%83%E7%BE%8E%E4%B8%9C%E8%B7%AF5%E5%8F%B7116%E5%AE%A4%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·南城" data-search="东莞·南城 pho八珍南洋·越南牛肉粉 南城街道元美中路菊香苑102号 粉面简餐 越南牛肉粉；具体配菜按当天菜单">
+      <div class="meta"><span>东莞·南城</span><span>粉面简餐</span><span class="checked">近期可查</span></div>
+      <h2>PHO八珍南洋·越南牛肉粉</h2>
+      <p class="address">南城街道元美中路菊香苑102号</p>
+      <dl>
+        <div><dt>营业</dt><dd>11:00–20:00</dd></div>
+        <div><dt>推荐</dt><dd>越南牛肉粉；具体配菜按当天菜单</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=PHO%E5%85%AB%E7%8F%8D%E5%8D%97%E6%B4%8B%C2%B7%E8%B6%8A%E5%8D%97%E7%89%9B%E8%82%89%E7%B2%89%20%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E5%85%83%E7%BE%8E%E4%B8%AD%E8%B7%AF%E8%8F%8A%E9%A6%99%E8%8B%91102%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·南城" data-search="东莞·南城 points cafe 有点咖啡（南城店） 南城街道元美东路1号2栋101室 咖啡／甜品 海盐布丁卷、开心果巴斯克、抹茶茉莉卷、一豆三喝">
+      <div class="meta"><span>东莞·南城</span><span>咖啡／甜品</span><span class="checked">近期可查</span></div>
+      <h2>Points Cafe 有点咖啡（南城店）</h2>
+      <p class="address">南城街道元美东路1号2栋101室</p>
+      <dl>
+        <div><dt>营业</dt><dd>11:00–18:30（周一休息，临时调整以门店为准）</dd></div>
+        <div><dt>推荐</dt><dd>海盐布丁卷、开心果巴斯克、抹茶茉莉卷、一豆三喝</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=Points%20Cafe%20%E6%9C%89%E7%82%B9%E5%92%96%E5%95%A1%EF%BC%88%E5%8D%97%E5%9F%8E%E5%BA%97%EF%BC%89%20%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E5%85%83%E7%BE%8E%E4%B8%9C%E8%B7%AF1%E5%8F%B72%E6%A0%8B101%E5%AE%A4&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·南城" data-search="东莞·南城 隅·kitchen（菊香苑店） 南城街道元美东路9号106室附近 正餐／甜品 小蛋糕；具体口味看当日甜点柜">
+      <div class="meta"><span>东莞·南城</span><span>正餐／甜品</span><span class="checked">近期可查</span></div>
+      <h2>隅·kitchen（菊香苑店）</h2>
+      <p class="address">南城街道元美东路9号106室附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>11:00–21:30</dd></div>
+        <div><dt>推荐</dt><dd>小蛋糕；具体口味看当日甜点柜</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%9A%85%C2%B7kitchen%EF%BC%88%E8%8F%8A%E9%A6%99%E8%8B%91%E5%BA%97%EF%BC%89%20%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E5%85%83%E7%BE%8E%E4%B8%9C%E8%B7%AF9%E5%8F%B7106%E5%AE%A4%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·南城" data-search="东莞·南城 潮发潮汕牛肉店（汇一城店） 南城街道鸿福路200号海德汇一城三区 火锅／正餐 鲜切牛肉、牛肉丸、牛骨汤底；部位按当天供应">
+      <div class="meta"><span>东莞·南城</span><span>火锅／正餐</span><span class="pending">待确认</span></div>
+      <h2>潮发潮汕牛肉店（汇一城店）</h2>
+      <p class="address">南城街道鸿福路200号海德汇一城三区</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>鲜切牛肉、牛肉丸、牛骨汤底；部位按当天供应</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%BD%AE%E5%8F%91%E6%BD%AE%E6%B1%95%E7%89%9B%E8%82%89%E5%BA%97%EF%BC%88%E6%B1%87%E4%B8%80%E5%9F%8E%E5%BA%97%EF%BC%89%20%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E9%B8%BF%E7%A6%8F%E8%B7%AF200%E5%8F%B7%E6%B5%B7%E5%BE%B7%E6%B1%87%E4%B8%80%E5%9F%8E%E4%B8%89%E5%8C%BA&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·南城" data-search="东莞·南城 一芸火锅食屋（第一国际店） 南城街道朝阳路3号111号 火锅 番茄锅底、厚切肥牛、虾滑、芝士鱼豆腐、辛拉面">
+      <div class="meta"><span>东莞·南城</span><span>火锅</span><span class="checked">近期平台可查</span></div>
+      <h2>一芸火锅食屋（第一国际店）</h2>
+      <p class="address">南城街道朝阳路3号111号</p>
+      <dl>
+        <div><dt>营业</dt><dd>11:00–14:00、17:30–22:00（建议再确认）</dd></div>
+        <div><dt>推荐</dt><dd>番茄锅底、厚切肥牛、虾滑、芝士鱼豆腐、辛拉面</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E4%B8%80%E8%8A%B8%E7%81%AB%E9%94%85%E9%A3%9F%E5%B1%8B%EF%BC%88%E7%AC%AC%E4%B8%80%E5%9B%BD%E9%99%85%E5%BA%97%EF%BC%89%20%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E6%9C%9D%E9%98%B3%E8%B7%AF3%E5%8F%B7111%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·南城" data-search="东莞·南城 全汕记·潮汕冰屋（银丰路店） 南城街道胜和银丰路14号106室 甜品／粉面简餐 潮汕冰品与小吃；具体必点待补菜单">
+      <div class="meta"><span>东莞·南城</span><span>甜品／粉面简餐</span><span class="pending">待确认</span></div>
+      <h2>全汕记·潮汕冰屋（银丰路店）</h2>
+      <p class="address">南城街道胜和银丰路14号106室</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>潮汕冰品与小吃；具体必点待补菜单</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%85%A8%E6%B1%95%E8%AE%B0%C2%B7%E6%BD%AE%E6%B1%95%E5%86%B0%E5%B1%8B%EF%BC%88%E9%93%B6%E4%B8%B0%E8%B7%AF%E5%BA%97%EF%BC%89%20%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E8%83%9C%E5%92%8C%E9%93%B6%E4%B8%B0%E8%B7%AF14%E5%8F%B7106%E5%AE%A4&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·南城" data-search="东莞·南城 时宜居酒屋 南城街道元美东路11号115室 烧烤夜宵／正餐 串烧、酒肴与夜宵类；具体招牌待菜单确认">
+      <div class="meta"><span>东莞·南城</span><span>烧烤夜宵／正餐</span><span class="checked">近期可查</span></div>
+      <h2>时宜居酒屋</h2>
+      <p class="address">南城街道元美东路11号115室</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>串烧、酒肴与夜宵类；具体招牌待菜单确认</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%97%B6%E5%AE%9C%E5%B1%85%E9%85%92%E5%B1%8B%20%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E5%85%83%E7%BE%8E%E4%B8%9C%E8%B7%AF11%E5%8F%B7115%E5%AE%A4&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·南城" data-search="东莞·南城 金记烧鹅（簪花路店） 南城街道簪花路8号179室 粉面简餐／正餐 烧鹅、烧味双拼；具体部位与饭类看当日出品">
+      <div class="meta"><span>东莞·南城</span><span>粉面简餐／正餐</span><span class="checked">近期可查</span></div>
+      <h2>金记烧鹅（簪花路店）</h2>
+      <p class="address">南城街道簪花路8号179室</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>烧鹅、烧味双拼；具体部位与饭类看当日出品</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%87%91%E8%AE%B0%E7%83%A7%E9%B9%85%EF%BC%88%E7%B0%AA%E8%8A%B1%E8%B7%AF%E5%BA%97%EF%BC%89%20%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E7%B0%AA%E8%8A%B1%E8%B7%AF8%E5%8F%B7179%E5%AE%A4&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·南城" data-search="东莞·南城 doo gelato 南城街道簪花路6号华凯豪庭 甜品 gelato 季节口味；到店看当天口味牌">
+      <div class="meta"><span>东莞·南城</span><span>甜品</span><span class="pending">待确认</span></div>
+      <h2>DOO Gelato</h2>
+      <p class="address">南城街道簪花路6号华凯豪庭</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>Gelato 季节口味；到店看当天口味牌</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=DOO%20Gelato%20%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E7%B0%AA%E8%8A%B1%E8%B7%AF6%E5%8F%B7%E5%8D%8E%E5%87%AF%E8%B1%AA%E5%BA%AD&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·南城" data-search="东莞·南城 早之恋小笼包（东骏豪苑店） 南城街道东骏路东骏豪苑8号108铺 早餐茶点／粉面简餐 小笼包；适合早餐顺路吃">
+      <div class="meta"><span>东莞·南城</span><span>早餐茶点／粉面简餐</span><span class="pending">待确认</span></div>
+      <h2>早之恋小笼包（东骏豪苑店）</h2>
+      <p class="address">南城街道东骏路东骏豪苑8号108铺</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>小笼包；适合早餐顺路吃</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%97%A9%E4%B9%8B%E6%81%8B%E5%B0%8F%E7%AC%BC%E5%8C%85%EF%BC%88%E4%B8%9C%E9%AA%8F%E8%B1%AA%E8%8B%91%E5%BA%97%EF%BC%89%20%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E4%B8%9C%E9%AA%8F%E8%B7%AF%E4%B8%9C%E9%AA%8F%E8%B1%AA%E8%8B%918%E5%8F%B7108%E9%93%BA&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·东城" data-search="东莞·东城 璞羽咖啡 pavo（御景湾店） 东城街道虎英路4号御景湾湖畔酒店内3栋101室 咖啡／正餐 海盐芝士拿铁、卡美罗焦糖拿铁、奶油菇菇意粉、西冷牛排">
+      <div class="meta"><span>东莞·东城</span><span>咖啡／正餐</span><span class="pending">待确认</span></div>
+      <h2>璞羽咖啡 PAVO（御景湾店）</h2>
+      <p class="address">东城街道虎英路4号御景湾湖畔酒店内3栋101室</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>海盐芝士拿铁、卡美罗焦糖拿铁、奶油菇菇意粉、西冷牛排</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E7%92%9E%E7%BE%BD%E5%92%96%E5%95%A1%20PAVO%EF%BC%88%E5%BE%A1%E6%99%AF%E6%B9%BE%E5%BA%97%EF%BC%89%20%E4%B8%9C%E5%9F%8E%E8%A1%97%E9%81%93%E8%99%8E%E8%8B%B1%E8%B7%AF4%E5%8F%B7%E5%BE%A1%E6%99%AF%E6%B9%BE%E6%B9%96%E7%95%94%E9%85%92%E5%BA%97%E5%86%853%E6%A0%8B101%E5%AE%A4&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·东城" data-search="东莞·东城 敖记煲仔饭店 东城街道水横涌路13号 正餐 招牌五宝饭、腊味合拼饭；锅巴是重点">
+      <div class="meta"><span>东莞·东城</span><span>正餐</span><span class="checked">近期可查</span></div>
+      <h2>敖记煲仔饭店</h2>
+      <p class="address">东城街道水横涌路13号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>招牌五宝饭、腊味合拼饭；锅巴是重点</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%95%96%E8%AE%B0%E7%85%B2%E4%BB%94%E9%A5%AD%E5%BA%97%20%E4%B8%9C%E5%9F%8E%E8%A1%97%E9%81%93%E6%B0%B4%E6%A8%AA%E6%B6%8C%E8%B7%AF13%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·万江" data-search="东莞·万江 亲戚屋企农家菜（下坝店） 万江街道坝头社区下坝三坊八巷8号（清吧村第二停车场旁） 正餐 功夫鱼、佛手大排骨、紫苏焗大肠、盐焗猪腰、姜蓉饭">
+      <div class="meta"><span>东莞·万江</span><span>正餐</span><span class="checked">近期可查</span></div>
+      <h2>亲戚屋企农家菜（下坝店）</h2>
+      <p class="address">万江街道坝头社区下坝三坊八巷8号（清吧村第二停车场旁）</p>
+      <dl>
+        <div><dt>营业</dt><dd>16:30–21:00</dd></div>
+        <div><dt>推荐</dt><dd>功夫鱼、佛手大排骨、紫苏焗大肠、盐焗猪腰、姜蓉饭</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E4%BA%B2%E6%88%9A%E5%B1%8B%E4%BC%81%E5%86%9C%E5%AE%B6%E8%8F%9C%EF%BC%88%E4%B8%8B%E5%9D%9D%E5%BA%97%EF%BC%89%20%E4%B8%87%E6%B1%9F%E8%A1%97%E9%81%93%E5%9D%9D%E5%A4%B4%E7%A4%BE%E5%8C%BA%E4%B8%8B%E5%9D%9D%E4%B8%89%E5%9D%8A%E5%85%AB%E5%B7%B78%E5%8F%B7%EF%BC%88%E6%B8%85%E5%90%A7%E6%9D%91%E7%AC%AC%E4%BA%8C%E5%81%9C%E8%BD%A6%E5%9C%BA%E6%97%81%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·万江" data-search="东莞·万江 富兴港式云吞面（万江店） 万江街道万福路25号首层 粉面简餐 鲜虾云吞面；具体招牌组合待菜单确认">
+      <div class="meta"><span>东莞·万江</span><span>粉面简餐</span><span class="pending">待确认</span></div>
+      <h2>富兴港式云吞面（万江店）</h2>
+      <p class="address">万江街道万福路25号首层</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>鲜虾云吞面；具体招牌组合待菜单确认</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%AF%8C%E5%85%B4%E6%B8%AF%E5%BC%8F%E4%BA%91%E5%90%9E%E9%9D%A2%EF%BC%88%E4%B8%87%E6%B1%9F%E5%BA%97%EF%BC%89%20%E4%B8%87%E6%B1%9F%E8%A1%97%E9%81%93%E4%B8%87%E7%A6%8F%E8%B7%AF25%E5%8F%B7%E9%A6%96%E5%B1%82&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·万江" data-search="东莞·万江 唐伯虎烧鸡翅 万江街道袁屋基街一巷28号101房 烧烤夜宵 烧鸡翅；其他必点待菜单补充">
+      <div class="meta"><span>东莞·万江</span><span>烧烤夜宵</span><span class="pending">待确认</span></div>
+      <h2>唐伯虎烧鸡翅</h2>
+      <p class="address">万江街道袁屋基街一巷28号101房</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>烧鸡翅；其他必点待菜单补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%94%90%E4%BC%AF%E8%99%8E%E7%83%A7%E9%B8%A1%E7%BF%85%20%E4%B8%87%E6%B1%9F%E8%A1%97%E9%81%93%E8%A2%81%E5%B1%8B%E5%9F%BA%E8%A1%97%E4%B8%80%E5%B7%B728%E5%8F%B7101%E6%88%BF&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·寮步" data-search="东莞·寮步 万威茶餐厅（寮步店） 寮步镇西南路12号 正餐／早餐茶点 德国咸猪手、冰镇菠萝油、鲜奶蛋挞、招牌大什扒、红白鸳鸯焗饭">
+      <div class="meta"><span>东莞·寮步</span><span>正餐／早餐茶点</span><span class="checked">近期可查</span></div>
+      <h2>万威茶餐厅（寮步店）</h2>
+      <p class="address">寮步镇西南路12号</p>
+      <dl>
+        <div><dt>营业</dt><dd>07:00–24:00（周末可能提前至23:00结束）</dd></div>
+        <div><dt>推荐</dt><dd>德国咸猪手、冰镇菠萝油、鲜奶蛋挞、招牌大什扒、红白鸳鸯焗饭</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E4%B8%87%E5%A8%81%E8%8C%B6%E9%A4%90%E5%8E%85%EF%BC%88%E5%AF%AE%E6%AD%A5%E5%BA%97%EF%BC%89%20%E5%AF%AE%E6%AD%A5%E9%95%87%E8%A5%BF%E5%8D%97%E8%B7%AF12%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·莞城" data-search="东莞·莞城 禄源公·老莞城饭店 莞城街道阮涌路40号三楼 正餐 莞城家常菜；具体招牌待菜单确认">
+      <div class="meta"><span>东莞·莞城</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>禄源公·老莞城饭店</h2>
+      <p class="address">莞城街道阮涌路40号三楼</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>莞城家常菜；具体招牌待菜单确认</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E7%A6%84%E6%BA%90%E5%85%AC%C2%B7%E8%80%81%E8%8E%9E%E5%9F%8E%E9%A5%AD%E5%BA%97%20%E8%8E%9E%E5%9F%8E%E8%A1%97%E9%81%93%E9%98%AE%E6%B6%8C%E8%B7%AF40%E5%8F%B7%E4%B8%89%E6%A5%BC&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·莞城" data-search="东莞·莞城 林记云吞面（莞城店） 莞城街道运河东一路195号附近 粉面简餐 云吞面；门牌与招牌组合待确认">
+      <div class="meta"><span>东莞·莞城</span><span>粉面简餐</span><span class="pending">待确认</span></div>
+      <h2>林记云吞面（莞城店）</h2>
+      <p class="address">莞城街道运河东一路195号附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>云吞面；门牌与招牌组合待确认</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%9E%97%E8%AE%B0%E4%BA%91%E5%90%9E%E9%9D%A2%EF%BC%88%E8%8E%9E%E5%9F%8E%E5%BA%97%EF%BC%89%20%E8%8E%9E%E5%9F%8E%E8%A1%97%E9%81%93%E8%BF%90%E6%B2%B3%E4%B8%9C%E4%B8%80%E8%B7%AF195%E5%8F%B7%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·道滘" data-search="东莞·道滘 after work 沁潼咖啡 道滘镇金牛新村南路55号 咖啡 咖啡饮品；具体招牌待菜单确认">
+      <div class="meta"><span>东莞·道滘</span><span>咖啡</span><span class="pending">待确认</span></div>
+      <h2>After work 沁潼咖啡</h2>
+      <p class="address">道滘镇金牛新村南路55号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>咖啡饮品；具体招牌待菜单确认</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=After%20work%20%E6%B2%81%E6%BD%BC%E5%92%96%E5%95%A1%20%E9%81%93%E6%BB%98%E9%95%87%E9%87%91%E7%89%9B%E6%96%B0%E6%9D%91%E5%8D%97%E8%B7%AF55%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·道滘" data-search="东莞·道滘 明家饭香私房菜 道滘镇永庆村富华路39号第一层 正餐 适合正餐聚餐；具体招牌待菜单补充">
+      <div class="meta"><span>东莞·道滘</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>明家饭香私房菜</h2>
+      <p class="address">道滘镇永庆村富华路39号第一层</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>适合正餐聚餐；具体招牌待菜单补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%98%8E%E5%AE%B6%E9%A5%AD%E9%A6%99%E7%A7%81%E6%88%BF%E8%8F%9C%20%E9%81%93%E6%BB%98%E9%95%87%E6%B0%B8%E5%BA%86%E6%9D%91%E5%AF%8C%E5%8D%8E%E8%B7%AF39%E5%8F%B7%E7%AC%AC%E4%B8%80%E5%B1%82&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·厚街" data-search="东莞·厚街 绿帐篷咖啡 greencamp（厚街店） 厚街镇东风二路83号101室 咖啡 咖啡饮品；适合拍照与休息">
+      <div class="meta"><span>东莞·厚街</span><span>咖啡</span><span class="pending">待确认</span></div>
+      <h2>绿帐篷咖啡 GREENCAMP（厚街店）</h2>
+      <p class="address">厚街镇东风二路83号101室</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>咖啡饮品；适合拍照与休息</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E7%BB%BF%E5%B8%90%E7%AF%B7%E5%92%96%E5%95%A1%20GREENCAMP%EF%BC%88%E5%8E%9A%E8%A1%97%E5%BA%97%EF%BC%89%20%E5%8E%9A%E8%A1%97%E9%95%87%E4%B8%9C%E9%A3%8E%E4%BA%8C%E8%B7%AF83%E5%8F%B7101%E5%AE%A4&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·大岭山" data-search="东莞·大岭山 福兴荔枝柴烧鹅 大岭山镇建设路50号101室 正餐／粉面简餐 荔枝柴烧鹅">
+      <div class="meta"><span>东莞·大岭山</span><span>正餐／粉面简餐</span><span class="pending">待确认</span></div>
+      <h2>福兴荔枝柴烧鹅</h2>
+      <p class="address">大岭山镇建设路50号101室</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>荔枝柴烧鹅</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E7%A6%8F%E5%85%B4%E8%8D%94%E6%9E%9D%E6%9F%B4%E7%83%A7%E9%B9%85%20%E5%A4%A7%E5%B2%AD%E5%B1%B1%E9%95%87%E5%BB%BA%E8%AE%BE%E8%B7%AF50%E5%8F%B7101%E5%AE%A4&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·大朗" data-search="东莞·大朗 济州屋韩国料理（大朗·里悦里店） 大朗镇富民中路193号碧桂园里悦里附近 正餐 韩式烤肉与锅物；准确门牌、招牌待确认">
+      <div class="meta"><span>东莞·大朗</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>济州屋韩国料理（大朗·里悦里店）</h2>
+      <p class="address">大朗镇富民中路193号碧桂园里悦里附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>韩式烤肉与锅物；准确门牌、招牌待确认</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%B5%8E%E5%B7%9E%E5%B1%8B%E9%9F%A9%E5%9B%BD%E6%96%99%E7%90%86%EF%BC%88%E5%A4%A7%E6%9C%97%C2%B7%E9%87%8C%E6%82%A6%E9%87%8C%E5%BA%97%EF%BC%89%20%E5%A4%A7%E6%9C%97%E9%95%87%E5%AF%8C%E6%B0%91%E4%B8%AD%E8%B7%AF193%E5%8F%B7%E7%A2%A7%E6%A1%82%E5%9B%AD%E9%87%8C%E6%82%A6%E9%87%8C%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·大朗" data-search="东莞·大朗 小宝哥哈尔滨大油边（大朗金地店） 大朗镇富民中路346号附近 烧烤夜宵 哈尔滨大油边、烤串；准确门牌待确认">
+      <div class="meta"><span>东莞·大朗</span><span>烧烤夜宵</span><span class="pending">待确认</span></div>
+      <h2>小宝哥哈尔滨大油边（大朗金地店）</h2>
+      <p class="address">大朗镇富民中路346号附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>哈尔滨大油边、烤串；准确门牌待确认</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%B0%8F%E5%AE%9D%E5%93%A5%E5%93%88%E5%B0%94%E6%BB%A8%E5%A4%A7%E6%B2%B9%E8%BE%B9%EF%BC%88%E5%A4%A7%E6%9C%97%E9%87%91%E5%9C%B0%E5%BA%97%EF%BC%89%20%E5%A4%A7%E6%9C%97%E9%95%87%E5%AF%8C%E6%B0%91%E4%B8%AD%E8%B7%AF346%E5%8F%B7%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="广州" data-search="广州 潮汕面馆（祥元南一街） 白云区三元里街道祥元南一街，新华书店小区附近 粉面简餐 实拍可见湿炒粿条／炒粉、清汤粿条或汤面">
+      <div class="meta"><span>广州</span><span>粉面简餐</span><span class="pending">待确认</span></div>
+      <h2>潮汕面馆（祥元南一街）</h2>
+      <p class="address">白云区三元里街道祥元南一街，新华书店小区附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>实拍可见湿炒粿条／炒粉、清汤粿条或汤面</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%BD%AE%E6%B1%95%E9%9D%A2%E9%A6%86%EF%BC%88%E7%A5%A5%E5%85%83%E5%8D%97%E4%B8%80%E8%A1%97%EF%BC%89%20%E7%99%BD%E4%BA%91%E5%8C%BA%E4%B8%89%E5%85%83%E9%87%8C%E8%A1%97%E9%81%93%E7%A5%A5%E5%85%83%E5%8D%97%E4%B8%80%E8%A1%97%EF%BC%8C%E6%96%B0%E5%8D%8E%E4%B9%A6%E5%BA%97%E5%B0%8F%E5%8C%BA%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="广州" data-search="广州 东川炭炉鸡煲·榴莲瓦煲鸡 越秀区西华路495号 火锅／烧烤夜宵 榴莲瓦煲鸡、炭炉鸡煲；收尾可加面吸汤">
+      <div class="meta"><span>广州</span><span>火锅／烧烤夜宵</span><span class="checked">近期可查</span></div>
+      <h2>东川炭炉鸡煲·榴莲瓦煲鸡</h2>
+      <p class="address">越秀区西华路495号</p>
+      <dl>
+        <div><dt>营业</dt><dd>16:30–次日02:00（平台间略有差异）</dd></div>
+        <div><dt>推荐</dt><dd>榴莲瓦煲鸡、炭炉鸡煲；收尾可加面吸汤</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E4%B8%9C%E5%B7%9D%E7%82%AD%E7%82%89%E9%B8%A1%E7%85%B2%C2%B7%E6%A6%B4%E8%8E%B2%E7%93%A6%E7%85%B2%E9%B8%A1%20%E8%B6%8A%E7%A7%80%E5%8C%BA%E8%A5%BF%E5%8D%8E%E8%B7%AF495%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="广州" data-search="广州 珍珍小食店（西华路店） 荔湾区西华路183号首层 粉面简餐／正餐 牛腩珍珠粉、牛筋啫啫粉、牛腩猪肠粉啫啫煲">
+      <div class="meta"><span>广州</span><span>粉面简餐／正餐</span><span class="checked">近期可查</span></div>
+      <h2>珍珍小食店（西华路店）</h2>
+      <p class="address">荔湾区西华路183号首层</p>
+      <dl>
+        <div><dt>营业</dt><dd>06:00–次日02:00</dd></div>
+        <div><dt>推荐</dt><dd>牛腩珍珠粉、牛筋啫啫粉、牛腩猪肠粉啫啫煲</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E7%8F%8D%E7%8F%8D%E5%B0%8F%E9%A3%9F%E5%BA%97%EF%BC%88%E8%A5%BF%E5%8D%8E%E8%B7%AF%E5%BA%97%EF%BC%89%20%E8%8D%94%E6%B9%BE%E5%8C%BA%E8%A5%BF%E5%8D%8E%E8%B7%AF183%E5%8F%B7%E9%A6%96%E5%B1%82&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="澳门" data-search="澳门 海湾餐厅（氹仔分店） 氹仔地堡街53–67号泉福新村第二期地下s、t、u及v座 正餐／海鲜 西洋炒蚬、马介休球、海鲜饭、葡国鸡">
+      <div class="meta"><span>澳门</span><span>正餐／海鲜</span><span class="checked">官方确认</span></div>
+      <h2>海湾餐厅（氹仔分店）</h2>
+      <p class="address">氹仔地堡街53–67号泉福新村第二期地下S、T、U及V座</p>
+      <dl>
+        <div><dt>营业</dt><dd>12:00–21:00</dd></div>
+        <div><dt>推荐</dt><dd>西洋炒蚬、马介休球、海鲜饭、葡国鸡</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%B5%B7%E6%B9%BE%E9%A4%90%E5%8E%85%EF%BC%88%E6%B0%B9%E4%BB%94%E5%88%86%E5%BA%97%EF%BC%89%20%E6%B0%B9%E4%BB%94%E5%9C%B0%E5%A0%A1%E8%A1%9753%E2%80%9367%E5%8F%B7%E6%B3%89%E7%A6%8F%E6%96%B0%E6%9D%91%E7%AC%AC%E4%BA%8C%E6%9C%9F%E5%9C%B0%E4%B8%8BS%E3%80%81T%E3%80%81U%E5%8F%8AV%E5%BA%A7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="澳门" data-search="澳门 goat bakers 永联台46号（patio da eterna união 46） 甜品 花杯挞；芝士、抹茶、玫瑰等口味，热门时段可能排队">
+      <div class="meta"><span>澳门</span><span>甜品</span><span class="checked">近期可查</span></div>
+      <h2>Goat Bakers</h2>
+      <p class="address">永联台46号（Patio da Eterna União 46）</p>
+      <dl>
+        <div><dt>营业</dt><dd>11:00–19:00</dd></div>
+        <div><dt>推荐</dt><dd>花杯挞；芝士、抹茶、玫瑰等口味，热门时段可能排队</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=Goat%20Bakers%20%E6%B0%B8%E8%81%94%E5%8F%B046%E5%8F%B7%EF%BC%88Patio%20da%20Eterna%20Uni%C3%A3o%2046%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="澳门" data-search="澳门 玛嘉烈蛋挞店 大堂区马统领街66号金利来大厦地下 甜品 葡式蛋挞">
+      <div class="meta"><span>澳门</span><span>甜品</span><span class="checked">近期平台可查</span></div>
+      <h2>玛嘉烈蛋挞店</h2>
+      <p class="address">大堂区马统领街66号金利来大厦地下</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>葡式蛋挞</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E7%8E%9B%E5%98%89%E7%83%88%E8%9B%8B%E6%8C%9E%E5%BA%97%20%E5%A4%A7%E5%A0%82%E5%8C%BA%E9%A9%AC%E7%BB%9F%E9%A2%86%E8%A1%9766%E5%8F%B7%E9%87%91%E5%88%A9%E6%9D%A5%E5%A4%A7%E5%8E%A6%E5%9C%B0%E4%B8%8B&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="澳门" data-search="澳门 巴黎轩 澳门巴黎人酒店6层l06（巴黎铁塔内） 正餐 粤菜点心与景观用餐；具体招牌按当季菜单">
+      <div class="meta"><span>澳门</span><span>正餐</span><span class="checked">官方确认</span></div>
+      <h2>巴黎轩</h2>
+      <p class="address">澳门巴黎人酒店6层L06（巴黎铁塔内）</p>
+      <dl>
+        <div><dt>营业</dt><dd>午餐及晚餐分段营业；逢指定工作日休息，预订前查看官网</dd></div>
+        <div><dt>推荐</dt><dd>粤菜点心与景观用餐；具体招牌按当季菜单</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%B7%B4%E9%BB%8E%E8%BD%A9%20%E6%BE%B3%E9%97%A8%E5%B7%B4%E9%BB%8E%E4%BA%BA%E9%85%92%E5%BA%976%E5%B1%82L06%EF%BC%88%E5%B7%B4%E9%BB%8E%E9%93%81%E5%A1%94%E5%86%85%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="澳门" data-search="澳门 安德鲁饼店 澳门，具体分店待选 甜品 安德鲁葡挞；按行程选择路环或市区分店">
+      <div class="meta"><span>澳门</span><span>甜品</span><span class="checked">近期可查</span></div>
+      <h2>安德鲁饼店</h2>
+      <p class="address">澳门，具体分店待选</p>
+      <dl>
+        <div><dt>营业</dt><dd>官也街店 10:00–21:00；其他分店时间不同</dd></div>
+        <div><dt>推荐</dt><dd>安德鲁葡挞；按行程选择路环或市区分店</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%AE%89%E5%BE%B7%E9%B2%81%E9%A5%BC%E5%BA%97%20%E6%BE%B3%E9%97%A8%EF%BC%8C%E5%85%B7%E4%BD%93%E5%88%86%E5%BA%97%E5%BE%85%E9%80%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="顺德" data-search="顺德 大门公饭店·地道顺德菜 顺德区105国道大门石材市场内 正餐 均安蒸猪、拆鱼羹；其他菜按人数搭配">
+      <div class="meta"><span>顺德</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>大门公饭店·地道顺德菜</h2>
+      <p class="address">顺德区105国道大门石材市场内</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>均安蒸猪、拆鱼羹；其他菜按人数搭配</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%A4%A7%E9%97%A8%E5%85%AC%E9%A5%AD%E5%BA%97%C2%B7%E5%9C%B0%E9%81%93%E9%A1%BA%E5%BE%B7%E8%8F%9C%20%E9%A1%BA%E5%BE%B7%E5%8C%BA105%E5%9B%BD%E9%81%93%E5%A4%A7%E9%97%A8%E7%9F%B3%E6%9D%90%E5%B8%82%E5%9C%BA%E5%86%85&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="顺德" data-search="顺德 松记食店（合祥路店） 顺德区容桂街道合祥路3号 火锅 牛肉、鱼片等原味食材；具体供应看当天">
+      <div class="meta"><span>顺德</span><span>火锅</span><span class="pending">待确认</span></div>
+      <h2>松记食店（合祥路店）</h2>
+      <p class="address">顺德区容桂街道合祥路3号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>牛肉、鱼片等原味食材；具体供应看当天</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%9D%BE%E8%AE%B0%E9%A3%9F%E5%BA%97%EF%BC%88%E5%90%88%E7%A5%A5%E8%B7%AF%E5%BA%97%EF%BC%89%20%E9%A1%BA%E5%BE%B7%E5%8C%BA%E5%AE%B9%E6%A1%82%E8%A1%97%E9%81%93%E5%90%88%E7%A5%A5%E8%B7%AF3%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="顺德" data-search="顺德 贞姨芝麻糊 顺德区文明中街与文明街交叉口附近 甜品 芝麻糊；准确门牌待确认">
+      <div class="meta"><span>顺德</span><span>甜品</span><span class="pending">待确认</span></div>
+      <h2>贞姨芝麻糊</h2>
+      <p class="address">顺德区文明中街与文明街交叉口附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>芝麻糊；准确门牌待确认</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E8%B4%9E%E5%A7%A8%E8%8A%9D%E9%BA%BB%E7%B3%8A%20%E9%A1%BA%E5%BE%B7%E5%8C%BA%E6%96%87%E6%98%8E%E4%B8%AD%E8%A1%97%E4%B8%8E%E6%96%87%E6%98%8E%E8%A1%97%E4%BA%A4%E5%8F%89%E5%8F%A3%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="顺德" data-search="顺德 白森·顺德双皮奶茶饮 顺德区大良街道果栏路2号 甜品／茶饮 双皮奶">
+      <div class="meta"><span>顺德</span><span>甜品／茶饮</span><span class="pending">待确认</span></div>
+      <h2>白森·顺德双皮奶茶饮</h2>
+      <p class="address">顺德区大良街道果栏路2号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>双皮奶</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E7%99%BD%E6%A3%AE%C2%B7%E9%A1%BA%E5%BE%B7%E5%8F%8C%E7%9A%AE%E5%A5%B6%E8%8C%B6%E9%A5%AE%20%E9%A1%BA%E5%BE%B7%E5%8C%BA%E5%A4%A7%E8%89%AF%E8%A1%97%E9%81%93%E6%9E%9C%E6%A0%8F%E8%B7%AF2%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="顺德" data-search="顺德 水仙头私房菜 顺德区良逢路六街1号 正餐 具体招牌待菜单补充">
+      <div class="meta"><span>顺德</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>水仙头私房菜</h2>
+      <p class="address">顺德区良逢路六街1号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌待菜单补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%B0%B4%E4%BB%99%E5%A4%B4%E7%A7%81%E6%88%BF%E8%8F%9C%20%E9%A1%BA%E5%BE%B7%E5%8C%BA%E8%89%AF%E9%80%A2%E8%B7%AF%E5%85%AD%E8%A1%971%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="顺德" data-search="顺德 顺风顺水 顺德区永怡路7巷1号（近良市场斜对面） 正餐 具体招牌待菜单补充">
+      <div class="meta"><span>顺德</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>顺风顺水</h2>
+      <p class="address">顺德区永怡路7巷1号（近良市场斜对面）</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌待菜单补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%A1%BA%E9%A3%8E%E9%A1%BA%E6%B0%B4%20%E9%A1%BA%E5%BE%B7%E5%8C%BA%E6%B0%B8%E6%80%A1%E8%B7%AF7%E5%B7%B71%E5%8F%B7%EF%BC%88%E8%BF%91%E8%89%AF%E5%B8%82%E5%9C%BA%E6%96%9C%E5%AF%B9%E9%9D%A2%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="深圳" data-search="深圳 sor sod 深圳市福田区金田路皇岗村上围一村41号102（福民地铁站c口附近） 咖啡／正餐／甜品 香辣牛肉芝士脆披萨、开心果草莓华夫饼、手冲咖啡与拿铁">
+      <div class="meta"><span>深圳</span><span>咖啡／正餐／甜品</span><span class="pending">待确认</span></div>
+      <h2>Sor Sod</h2>
+      <p class="address">深圳市福田区金田路皇岗村上围一村41号102（福民地铁站C口附近）</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>香辣牛肉芝士脆披萨、开心果草莓华夫饼、手冲咖啡与拿铁</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=Sor%20Sod%20%E6%B7%B1%E5%9C%B3%E5%B8%82%E7%A6%8F%E7%94%B0%E5%8C%BA%E9%87%91%E7%94%B0%E8%B7%AF%E7%9A%87%E5%B2%97%E6%9D%91%E4%B8%8A%E5%9B%B4%E4%B8%80%E6%9D%9141%E5%8F%B7102%EF%BC%88%E7%A6%8F%E6%B0%91%E5%9C%B0%E9%93%81%E7%AB%99C%E5%8F%A3%E9%99%84%E8%BF%91%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="深圳" data-search="深圳 mulimuli 木里 深圳宝安区灵芝园社区19区57栋兴华二路 咖啡／粉面简餐 具体招牌待菜单确认">
+      <div class="meta"><span>深圳</span><span>咖啡／粉面简餐</span><span class="pending">待确认</span></div>
+      <h2>mulimuli 木里</h2>
+      <p class="address">深圳宝安区灵芝园社区19区57栋兴华二路</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌待菜单确认</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=mulimuli%20%E6%9C%A8%E9%87%8C%20%E6%B7%B1%E5%9C%B3%E5%AE%9D%E5%AE%89%E5%8C%BA%E7%81%B5%E8%8A%9D%E5%9B%AD%E7%A4%BE%E5%8C%BA19%E5%8C%BA57%E6%A0%8B%E5%85%B4%E5%8D%8E%E4%BA%8C%E8%B7%AF&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="首尔" data-search="首尔 onion（圣水） 韩国首尔圣水洞 咖啡／甜品 草莓可颂、盐面包；工业风空间也是特色">
+      <div class="meta"><span>首尔</span><span>咖啡／甜品</span><span class="pending">待确认</span></div>
+      <h2>Onion（圣水）</h2>
+      <p class="address">韩国首尔圣水洞</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>草莓可颂、盐面包；工业风空间也是特色</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=Onion%EF%BC%88%E5%9C%A3%E6%B0%B4%EF%BC%89%20%E9%9F%A9%E5%9B%BD%E9%A6%96%E5%B0%94%E5%9C%A3%E6%B0%B4%E6%B4%9E&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="首尔" data-search="首尔 blue bottle coffee（圣水） 韩国首尔圣水洞 咖啡 手冲与意式咖啡；具体季节款看门店">
+      <div class="meta"><span>首尔</span><span>咖啡</span><span class="pending">待确认</span></div>
+      <h2>Blue Bottle Coffee（圣水）</h2>
+      <p class="address">韩国首尔圣水洞</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>手冲与意式咖啡；具体季节款看门店</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=Blue%20Bottle%20Coffee%EF%BC%88%E5%9C%A3%E6%B0%B4%EF%BC%89%20%E9%9F%A9%E5%9B%BD%E9%A6%96%E5%B0%94%E5%9C%A3%E6%B0%B4%E6%B4%9E&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="延吉" data-search="延吉 兴豆饭店 吉林省延吉市西市场附近 粉面简餐 炸酱面；准确门牌待确认">
+      <div class="meta"><span>延吉</span><span>粉面简餐</span><span class="pending">待确认</span></div>
+      <h2>兴豆饭店</h2>
+      <p class="address">吉林省延吉市西市场附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>炸酱面；准确门牌待确认</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%85%B4%E8%B1%86%E9%A5%AD%E5%BA%97%20%E5%90%89%E6%9E%97%E7%9C%81%E5%BB%B6%E5%90%89%E5%B8%82%E8%A5%BF%E5%B8%82%E5%9C%BA%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="釜山" data-search="釜山 民乐生鱼片中心 韩国釜山广安里 海鲜／正餐 按当天海鲜选择组合">
+      <div class="meta"><span>釜山</span><span>海鲜／正餐</span><span class="pending">待确认</span></div>
+      <h2>民乐生鱼片中心</h2>
+      <p class="address">韩国釜山广安里</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>按当天海鲜选择组合</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%B0%91%E4%B9%90%E7%94%9F%E9%B1%BC%E7%89%87%E4%B8%AD%E5%BF%83%20%E9%9F%A9%E5%9B%BD%E9%87%9C%E5%B1%B1%E5%B9%BF%E5%AE%89%E9%87%8C&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="长沙" data-search="长沙 1123·sunny山烨 长沙市天心区1123文化艺术创意园3号栋 住宿 江景、花园泳池与住宿空间；不再作为美食店推荐">
+      <div class="meta"><span>长沙</span><span>住宿</span><span class="pending">待确认</span></div>
+      <h2>1123·SUNNY山烨</h2>
+      <p class="address">长沙市天心区1123文化艺术创意园3号栋</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>江景、花园泳池与住宿空间；不再作为美食店推荐</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=1123%C2%B7SUNNY%E5%B1%B1%E7%83%A8%20%E9%95%BF%E6%B2%99%E5%B8%82%E5%A4%A9%E5%BF%83%E5%8C%BA1123%E6%96%87%E5%8C%96%E8%89%BA%E6%9C%AF%E5%88%9B%E6%84%8F%E5%9B%AD3%E5%8F%B7%E6%A0%8B&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="广州" data-search="广州 禄运茶居·手工点心（体育西店） 广州市天河区六运一街17号文昌商务楼3楼 早餐茶点／正餐 糯米鸡、香煎腊味萝卜糕、鲜虾炸春卷、葡式焗蛋挞、牛肉球、蒸排骨">
+      <div class="meta"><span>广州</span><span>早餐茶点／正餐</span><span class="checked">近期可查</span></div>
+      <h2>禄运茶居·手工点心（体育西店）</h2>
+      <p class="address">广州市天河区六运一街17号文昌商务楼3楼</p>
+      <dl>
+        <div><dt>营业</dt><dd>08:00–21:00</dd></div>
+        <div><dt>推荐</dt><dd>糯米鸡、香煎腊味萝卜糕、鲜虾炸春卷、葡式焗蛋挞、牛肉球、蒸排骨</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E7%A6%84%E8%BF%90%E8%8C%B6%E5%B1%85%C2%B7%E6%89%8B%E5%B7%A5%E7%82%B9%E5%BF%83%EF%BC%88%E4%BD%93%E8%82%B2%E8%A5%BF%E5%BA%97%EF%BC%89%20%E5%B9%BF%E5%B7%9E%E5%B8%82%E5%A4%A9%E6%B2%B3%E5%8C%BA%E5%85%AD%E8%BF%90%E4%B8%80%E8%A1%9717%E5%8F%B7%E6%96%87%E6%98%8C%E5%95%86%E5%8A%A1%E6%A5%BC3%E6%A5%BC&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·万江" data-search="东莞·万江 烧肉士多 万江街道下坝坊文化创意街28号 烧烤夜宵／正餐 烧肉拼盘与各类烤物；具体招牌以门店当日菜单为准">
+      <div class="meta"><span>东莞·万江</span><span>烧烤夜宵／正餐</span><span class="pending">待确认</span></div>
+      <h2>烧肉士多</h2>
+      <p class="address">万江街道下坝坊文化创意街28号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>烧肉拼盘与各类烤物；具体招牌以门店当日菜单为准</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E7%83%A7%E8%82%89%E5%A3%AB%E5%A4%9A%20%E4%B8%87%E6%B1%9F%E8%A1%97%E9%81%93%E4%B8%8B%E5%9D%9D%E5%9D%8A%E6%96%87%E5%8C%96%E5%88%9B%E6%84%8F%E8%A1%9728%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·南城" data-search="东莞·南城 十三联·泰排档（汇一城店） 南城街道元美东路石竹花园d座（朝阳路附近） 正餐 菠萝炒饭、黄咖喱、泰式炒蔬菜；具体菜名以门店菜单为准">
+      <div class="meta"><span>东莞·南城</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>十三联·泰排档（汇一城店）</h2>
+      <p class="address">南城街道元美东路石竹花园D座（朝阳路附近）</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>菠萝炒饭、黄咖喱、泰式炒蔬菜；具体菜名以门店菜单为准</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%8D%81%E4%B8%89%E8%81%94%C2%B7%E6%B3%B0%E6%8E%92%E6%A1%A3%EF%BC%88%E6%B1%87%E4%B8%80%E5%9F%8E%E5%BA%97%EF%BC%89%20%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E5%85%83%E7%BE%8E%E4%B8%9C%E8%B7%AF%E7%9F%B3%E7%AB%B9%E8%8A%B1%E5%9B%ADD%E5%BA%A7%EF%BC%88%E6%9C%9D%E9%98%B3%E8%B7%AF%E9%99%84%E8%BF%91%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="广州" data-search="广州 潮汕韦记鲜牛肉粿条（裕兴花园店） 广州市南沙区南沙街道惠盛街7号101铺 粉面简餐 鲜牛肉粿条；具体配料与供应以门店当天菜单为准">
+      <div class="meta"><span>广州</span><span>粉面简餐</span><span class="pending">待确认</span></div>
+      <h2>潮汕韦记鲜牛肉粿条（裕兴花园店）</h2>
+      <p class="address">广州市南沙区南沙街道惠盛街7号101铺</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>鲜牛肉粿条；具体配料与供应以门店当天菜单为准</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%BD%AE%E6%B1%95%E9%9F%A6%E8%AE%B0%E9%B2%9C%E7%89%9B%E8%82%89%E7%B2%BF%E6%9D%A1%EF%BC%88%E8%A3%95%E5%85%B4%E8%8A%B1%E5%9B%AD%E5%BA%97%EF%BC%89%20%E5%B9%BF%E5%B7%9E%E5%B8%82%E5%8D%97%E6%B2%99%E5%8C%BA%E5%8D%97%E6%B2%99%E8%A1%97%E9%81%93%E6%83%A0%E7%9B%9B%E8%A1%977%E5%8F%B7101%E9%93%BA&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="深圳" data-search="深圳 天宝兄弟（前海壹方城店） 深圳市宝安区新安街道新湖路深圳前海壹方城1层l1-j026号 正餐／海鲜 虾蟹与湖南风味热菜；具体招牌待核实">
+      <div class="meta"><span>深圳</span><span>正餐／海鲜</span><span class="checked">近期可查</span></div>
+      <h2>天宝兄弟（前海壹方城店）</h2>
+      <p class="address">深圳市宝安区新安街道新湖路深圳前海壹方城1层L1-J026号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>虾蟹与湖南风味热菜；具体招牌待核实</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%A4%A9%E5%AE%9D%E5%85%84%E5%BC%9F%EF%BC%88%E5%89%8D%E6%B5%B7%E5%A3%B9%E6%96%B9%E5%9F%8E%E5%BA%97%EF%BC%89%20%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E6%96%B0%E5%AE%89%E8%A1%97%E9%81%93%E6%96%B0%E6%B9%96%E8%B7%AF%E6%B7%B1%E5%9C%B3%E5%89%8D%E6%B5%B7%E5%A3%B9%E6%96%B9%E5%9F%8E1%E5%B1%82L1-J026%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="长沙" data-search="长沙 小湘汇（晚报大道店） 长沙市芙蓉区马王堆街道晚报大道349号长城万悦汇大厦1楼107 正餐 具体招牌菜待核实">
+      <div class="meta"><span>长沙</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>小湘汇（晚报大道店）</h2>
+      <p class="address">长沙市芙蓉区马王堆街道晚报大道349号长城万悦汇大厦1楼107</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌菜待核实</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%B0%8F%E6%B9%98%E6%B1%87%EF%BC%88%E6%99%9A%E6%8A%A5%E5%A4%A7%E9%81%93%E5%BA%97%EF%BC%89%20%E9%95%BF%E6%B2%99%E5%B8%82%E8%8A%99%E8%93%89%E5%8C%BA%E9%A9%AC%E7%8E%8B%E5%A0%86%E8%A1%97%E9%81%93%E6%99%9A%E6%8A%A5%E5%A4%A7%E9%81%93349%E5%8F%B7%E9%95%BF%E5%9F%8E%E4%B8%87%E6%82%A6%E6%B1%87%E5%A4%A7%E5%8E%A61%E6%A5%BC107&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="长沙" data-search="长沙 串小白烧烤（长沙沁园店） 长沙市芙蓉区古汉路与嘉雨路交叉口西北方向约186米 烧烤夜宵 烤串；具体招牌与营业时间待核实">
+      <div class="meta"><span>长沙</span><span>烧烤夜宵</span><span class="pending">待确认</span></div>
+      <h2>串小白烧烤（长沙沁园店）</h2>
+      <p class="address">长沙市芙蓉区古汉路与嘉雨路交叉口西北方向约186米</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>烤串；具体招牌与营业时间待核实</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E4%B8%B2%E5%B0%8F%E7%99%BD%E7%83%A7%E7%83%A4%EF%BC%88%E9%95%BF%E6%B2%99%E6%B2%81%E5%9B%AD%E5%BA%97%EF%BC%89%20%E9%95%BF%E6%B2%99%E5%B8%82%E8%8A%99%E8%93%89%E5%8C%BA%E5%8F%A4%E6%B1%89%E8%B7%AF%E4%B8%8E%E5%98%89%E9%9B%A8%E8%B7%AF%E4%BA%A4%E5%8F%89%E5%8F%A3%E8%A5%BF%E5%8C%97%E6%96%B9%E5%90%91%E7%BA%A6186%E7%B1%B3&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·长安" data-search="东莞·长安 鸡记湛江烧蚝王（锦江路店） 东莞市长安镇锦江路277号（近锦厦步行街） 烧烤夜宵／海鲜 烤生蚝；出品可能受当班师傅影响">
+      <div class="meta"><span>东莞·长安</span><span>烧烤夜宵／海鲜</span><span class="pending">待确认</span></div>
+      <h2>鸡记湛江烧蚝王（锦江路店）</h2>
+      <p class="address">东莞市长安镇锦江路277号（近锦厦步行街）</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>烤生蚝；出品可能受当班师傅影响</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%B8%A1%E8%AE%B0%E6%B9%9B%E6%B1%9F%E7%83%A7%E8%9A%9D%E7%8E%8B%EF%BC%88%E9%94%A6%E6%B1%9F%E8%B7%AF%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E9%95%BF%E5%AE%89%E9%95%87%E9%94%A6%E6%B1%9F%E8%B7%AF277%E5%8F%B7%EF%BC%88%E8%BF%91%E9%94%A6%E5%8E%A6%E6%AD%A5%E8%A1%8C%E8%A1%97%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="汕头" data-search="汕头 围炉夜话·潮汕卤水火锅（榕江店） 汕头市龙湖区金霞街道榕江路6号金冠商业中心d栋102号店面 火锅／正餐 卤水火锅；具体必点与套餐待核实">
+      <div class="meta"><span>汕头</span><span>火锅／正餐</span><span class="pending">待确认</span></div>
+      <h2>围炉夜话·潮汕卤水火锅（榕江店）</h2>
+      <p class="address">汕头市龙湖区金霞街道榕江路6号金冠商业中心D栋102号店面</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>卤水火锅；具体必点与套餐待核实</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%9B%B4%E7%82%89%E5%A4%9C%E8%AF%9D%C2%B7%E6%BD%AE%E6%B1%95%E5%8D%A4%E6%B0%B4%E7%81%AB%E9%94%85%EF%BC%88%E6%A6%95%E6%B1%9F%E5%BA%97%EF%BC%89%20%E6%B1%95%E5%A4%B4%E5%B8%82%E9%BE%99%E6%B9%96%E5%8C%BA%E9%87%91%E9%9C%9E%E8%A1%97%E9%81%93%E6%A6%95%E6%B1%9F%E8%B7%AF6%E5%8F%B7%E9%87%91%E5%86%A0%E5%95%86%E4%B8%9A%E4%B8%AD%E5%BF%83D%E6%A0%8B102%E5%8F%B7%E5%BA%97%E9%9D%A2&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="汕头" data-search="汕头 天汕牛肉火锅（阳光丽景家园店） 汕头市龙湖区金霞街道练江路29号阳光丽景家园1幢102、202号房之一 火锅／正餐 鲜切牛肉；不同部位按当天供应">
+      <div class="meta"><span>汕头</span><span>火锅／正餐</span><span class="pending">待确认</span></div>
+      <h2>天汕牛肉火锅（阳光丽景家园店）</h2>
+      <p class="address">汕头市龙湖区金霞街道练江路29号阳光丽景家园1幢102、202号房之一</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>鲜切牛肉；不同部位按当天供应</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%A4%A9%E6%B1%95%E7%89%9B%E8%82%89%E7%81%AB%E9%94%85%EF%BC%88%E9%98%B3%E5%85%89%E4%B8%BD%E6%99%AF%E5%AE%B6%E5%9B%AD%E5%BA%97%EF%BC%89%20%E6%B1%95%E5%A4%B4%E5%B8%82%E9%BE%99%E6%B9%96%E5%8C%BA%E9%87%91%E9%9C%9E%E8%A1%97%E9%81%93%E7%BB%83%E6%B1%9F%E8%B7%AF29%E5%8F%B7%E9%98%B3%E5%85%89%E4%B8%BD%E6%99%AF%E5%AE%B6%E5%9B%AD1%E5%B9%A2102%E3%80%81202%E5%8F%B7%E6%88%BF%E4%B9%8B%E4%B8%80&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="汕头" data-search="汕头 鮀浦老四果汁冰（鮀浦店） 汕头市金平区鮀新路1座（骏铧酒店旁一直巷） 甜品／茶饮 果汁冰；具体水果搭配按当天供应">
+      <div class="meta"><span>汕头</span><span>甜品／茶饮</span><span class="pending">待确认</span></div>
+      <h2>鮀浦老四果汁冰（鮀浦店）</h2>
+      <p class="address">汕头市金平区鮀新路1座（骏铧酒店旁一直巷）</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>果汁冰；具体水果搭配按当天供应</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%AE%80%E6%B5%A6%E8%80%81%E5%9B%9B%E6%9E%9C%E6%B1%81%E5%86%B0%EF%BC%88%E9%AE%80%E6%B5%A6%E5%BA%97%EF%BC%89%20%E6%B1%95%E5%A4%B4%E5%B8%82%E9%87%91%E5%B9%B3%E5%8C%BA%E9%AE%80%E6%96%B0%E8%B7%AF1%E5%BA%A7%EF%BC%88%E9%AA%8F%E9%93%A7%E9%85%92%E5%BA%97%E6%97%81%E4%B8%80%E7%9B%B4%E5%B7%B7%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="汕头" data-search="汕头 官塘领鲜鱼生·虾生·潮汕生腌·砂锅粥（龙眼总店） 汕头市金平区金砂中路帝景苑89号1幢106-107号 海鲜／正餐 鱼生、虾生、生腌、砂锅粥；生食请按个人身体情况选择">
+      <div class="meta"><span>汕头</span><span>海鲜／正餐</span><span class="pending">待确认</span></div>
+      <h2>官塘领鲜鱼生·虾生·潮汕生腌·砂锅粥（龙眼总店）</h2>
+      <p class="address">汕头市金平区金砂中路帝景苑89号1幢106-107号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>鱼生、虾生、生腌、砂锅粥；生食请按个人身体情况选择</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%AE%98%E5%A1%98%E9%A2%86%E9%B2%9C%E9%B1%BC%E7%94%9F%C2%B7%E8%99%BE%E7%94%9F%C2%B7%E6%BD%AE%E6%B1%95%E7%94%9F%E8%85%8C%C2%B7%E7%A0%82%E9%94%85%E7%B2%A5%EF%BC%88%E9%BE%99%E7%9C%BC%E6%80%BB%E5%BA%97%EF%BC%89%20%E6%B1%95%E5%A4%B4%E5%B8%82%E9%87%91%E5%B9%B3%E5%8C%BA%E9%87%91%E7%A0%82%E4%B8%AD%E8%B7%AF%E5%B8%9D%E6%99%AF%E8%8B%9189%E5%8F%B71%E5%B9%A2106-107%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="汕头" data-search="汕头 雪妃甜品（广祥路店） 汕头市潮南区峡山街道环美北路5-8号 甜品 水果冰、珍珠水果冰；具体水果按当天供应">
+      <div class="meta"><span>汕头</span><span>甜品</span><span class="pending">待确认</span></div>
+      <h2>雪妃甜品（广祥路店）</h2>
+      <p class="address">汕头市潮南区峡山街道环美北路5-8号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看门店最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>水果冰、珍珠水果冰；具体水果按当天供应</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%9B%AA%E5%A6%83%E7%94%9C%E5%93%81%EF%BC%88%E5%B9%BF%E7%A5%A5%E8%B7%AF%E5%BA%97%EF%BC%89%20%E6%B1%95%E5%A4%B4%E5%B8%82%E6%BD%AE%E5%8D%97%E5%8C%BA%E5%B3%A1%E5%B1%B1%E8%A1%97%E9%81%93%E7%8E%AF%E7%BE%8E%E5%8C%97%E8%B7%AF5-8%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·茶山" data-search="东莞·茶山 太兴餐厅（香港茶餐厅文化体验馆） 东莞市茶山镇茶兴路308号 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·茶山</span><span>正餐</span><span class="checked">近期可查</span></div>
+      <h2>太兴餐厅（香港茶餐厅文化体验馆）</h2>
+      <p class="address">东莞市茶山镇茶兴路308号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%A4%AA%E5%85%B4%E9%A4%90%E5%8E%85%EF%BC%88%E9%A6%99%E6%B8%AF%E8%8C%B6%E9%A4%90%E5%8E%85%E6%96%87%E5%8C%96%E4%BD%93%E9%AA%8C%E9%A6%86%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E8%8C%B6%E5%B1%B1%E9%95%87%E8%8C%B6%E5%85%B4%E8%B7%AF308%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·大朗" data-search="东莞·大朗 巴蜀缘川菜馆 东莞市大朗镇盆古庙街23号 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·大朗</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>巴蜀缘川菜馆</h2>
+      <p class="address">东莞市大朗镇盆古庙街23号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%B7%B4%E8%9C%80%E7%BC%98%E5%B7%9D%E8%8F%9C%E9%A6%86%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%A4%A7%E6%9C%97%E9%95%87%E7%9B%86%E5%8F%A4%E5%BA%99%E8%A1%9723%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·大朗" data-search="东莞·大朗 常平竹升云吞面（大朗求富路店） 东莞市大朗镇新体育中心路35号126室附近（门牌待核实） 小吃 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·大朗</span><span>小吃</span><span class="pending">待确认</span></div>
+      <h2>常平竹升云吞面（大朗求富路店）</h2>
+      <p class="address">东莞市大朗镇新体育中心路35号126室附近（门牌待核实）</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%B8%B8%E5%B9%B3%E7%AB%B9%E5%8D%87%E4%BA%91%E5%90%9E%E9%9D%A2%EF%BC%88%E5%A4%A7%E6%9C%97%E6%B1%82%E5%AF%8C%E8%B7%AF%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%A4%A7%E6%9C%97%E9%95%87%E6%96%B0%E4%BD%93%E8%82%B2%E4%B8%AD%E5%BF%83%E8%B7%AF35%E5%8F%B7126%E5%AE%A4%E9%99%84%E8%BF%91%EF%BC%88%E9%97%A8%E7%89%8C%E5%BE%85%E6%A0%B8%E5%AE%9E%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·大朗" data-search="东莞·大朗 潮州老细砂锅粥（大朗店） 东莞市大朗镇育民三街17号 小吃 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·大朗</span><span>小吃</span><span class="pending">待确认</span></div>
+      <h2>潮州老细砂锅粥（大朗店）</h2>
+      <p class="address">东莞市大朗镇育民三街17号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%BD%AE%E5%B7%9E%E8%80%81%E7%BB%86%E7%A0%82%E9%94%85%E7%B2%A5%EF%BC%88%E5%A4%A7%E6%9C%97%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%A4%A7%E6%9C%97%E9%95%87%E8%82%B2%E6%B0%91%E4%B8%89%E8%A1%9717%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·大朗" data-search="东莞·大朗 一手烧鹅店 东莞市大朗镇塘尾街23号 小吃 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·大朗</span><span>小吃</span><span class="pending">待确认</span></div>
+      <h2>一手烧鹅店</h2>
+      <p class="address">东莞市大朗镇塘尾街23号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E4%B8%80%E6%89%8B%E7%83%A7%E9%B9%85%E5%BA%97%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%A4%A7%E6%9C%97%E9%95%87%E5%A1%98%E5%B0%BE%E8%A1%9723%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·大岭山" data-search="东莞·大岭山 老友记粥城（元岭分店） 东莞市大岭山镇元岭村湖光山水附近 小吃 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·大岭山</span><span>小吃</span><span class="pending">待确认</span></div>
+      <h2>老友记粥城（元岭分店）</h2>
+      <p class="address">东莞市大岭山镇元岭村湖光山水附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E8%80%81%E5%8F%8B%E8%AE%B0%E7%B2%A5%E5%9F%8E%EF%BC%88%E5%85%83%E5%B2%AD%E5%88%86%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%A4%A7%E5%B2%AD%E5%B1%B1%E9%95%87%E5%85%83%E5%B2%AD%E6%9D%91%E6%B9%96%E5%85%89%E5%B1%B1%E6%B0%B4%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·大岭山" data-search="东莞·大岭山 鹏记私房菜（香园街店） 东莞市大岭山镇元岭村香园街14巷2号 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·大岭山</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>鹏记私房菜（香园街店）</h2>
+      <p class="address">东莞市大岭山镇元岭村香园街14巷2号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%B9%8F%E8%AE%B0%E7%A7%81%E6%88%BF%E8%8F%9C%EF%BC%88%E9%A6%99%E5%9B%AD%E8%A1%97%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%A4%A7%E5%B2%AD%E5%B1%B1%E9%95%87%E5%85%83%E5%B2%AD%E6%9D%91%E9%A6%99%E5%9B%AD%E8%A1%9714%E5%B7%B72%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·大岭山" data-search="东莞·大岭山 尚品牛道（帝京店） 东莞市大岭山镇长富街17号 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·大岭山</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>尚品牛道（帝京店）</h2>
+      <p class="address">东莞市大岭山镇长富街17号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%B0%9A%E5%93%81%E7%89%9B%E9%81%93%EF%BC%88%E5%B8%9D%E4%BA%AC%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%A4%A7%E5%B2%AD%E5%B1%B1%E9%95%87%E9%95%BF%E5%AF%8C%E8%A1%9717%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·道滘" data-search="东莞·道滘 7890（阳光城店） 东莞市道滘镇村南路2号之一 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·道滘</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>7890（阳光城店）</h2>
+      <p class="address">东莞市道滘镇村南路2号之一</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=7890%EF%BC%88%E9%98%B3%E5%85%89%E5%9F%8E%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E9%81%93%E6%BB%98%E9%95%87%E6%9D%91%E5%8D%97%E8%B7%AF2%E5%8F%B7%E4%B9%8B%E4%B8%80&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·道滘" data-search="东莞·道滘 好煮意（振兴东七路店） 东莞市道滘镇桥东大街4号附近 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·道滘</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>好煮意（振兴东七路店）</h2>
+      <p class="address">东莞市道滘镇桥东大街4号附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%A5%BD%E7%85%AE%E6%84%8F%EF%BC%88%E6%8C%AF%E5%85%B4%E4%B8%9C%E4%B8%83%E8%B7%AF%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E9%81%93%E6%BB%98%E9%95%87%E6%A1%A5%E4%B8%9C%E5%A4%A7%E8%A1%974%E5%8F%B7%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·道滘" data-search="东莞·道滘 厚河珍姐肠粉店 东莞市五花街与道滘厚德路交叉口附近 小吃 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·道滘</span><span>小吃</span><span class="pending">待确认</span></div>
+      <h2>厚河珍姐肠粉店</h2>
+      <p class="address">东莞市五花街与道滘厚德路交叉口附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%8E%9A%E6%B2%B3%E7%8F%8D%E5%A7%90%E8%82%A0%E7%B2%89%E5%BA%97%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E4%BA%94%E8%8A%B1%E8%A1%97%E4%B8%8E%E9%81%93%E6%BB%98%E5%8E%9A%E5%BE%B7%E8%B7%AF%E4%BA%A4%E5%8F%89%E5%8F%A3%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·道滘" data-search="东莞·道滘 滘·路边火锅·烤肉·榴莲自由（振兴北一路店） 东莞市道滘镇闸口振兴北一路10号 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·道滘</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>滘·路边火锅·烤肉·榴莲自由（振兴北一路店）</h2>
+      <p class="address">东莞市道滘镇闸口振兴北一路10号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%BB%98%C2%B7%E8%B7%AF%E8%BE%B9%E7%81%AB%E9%94%85%C2%B7%E7%83%A4%E8%82%89%C2%B7%E6%A6%B4%E8%8E%B2%E8%87%AA%E7%94%B1%EF%BC%88%E6%8C%AF%E5%85%B4%E5%8C%97%E4%B8%80%E8%B7%AF%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E9%81%93%E6%BB%98%E9%95%87%E9%97%B8%E5%8F%A3%E6%8C%AF%E5%85%B4%E5%8C%97%E4%B8%80%E8%B7%AF10%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·道滘" data-search="东莞·道滘 蒙自源米线大王（道滘店） 东莞市道滘镇振兴路北208号108室 小吃 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·道滘</span><span>小吃</span><span class="pending">待确认</span></div>
+      <h2>蒙自源米线大王（道滘店）</h2>
+      <p class="address">东莞市道滘镇振兴路北208号108室</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E8%92%99%E8%87%AA%E6%BA%90%E7%B1%B3%E7%BA%BF%E5%A4%A7%E7%8E%8B%EF%BC%88%E9%81%93%E6%BB%98%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E9%81%93%E6%BB%98%E9%95%87%E6%8C%AF%E5%85%B4%E8%B7%AF%E5%8C%97208%E5%8F%B7108%E5%AE%A4&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·道滘" data-search="东莞·道滘 香顺客家菜·宴窝喜宴（道滘店） 东莞市道滘镇粤晖路 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·道滘</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>香顺客家菜·宴窝喜宴（道滘店）</h2>
+      <p class="address">东莞市道滘镇粤晖路</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%A6%99%E9%A1%BA%E5%AE%A2%E5%AE%B6%E8%8F%9C%C2%B7%E5%AE%B4%E7%AA%9D%E5%96%9C%E5%AE%B4%EF%BC%88%E9%81%93%E6%BB%98%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E9%81%93%E6%BB%98%E9%95%87%E7%B2%A4%E6%99%96%E8%B7%AF&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·道滘" data-search="东莞·道滘 云屿白·三餐融合料理 东莞市道滘镇马嘶塘25巷2号 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·道滘</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>云屿白·三餐融合料理</h2>
+      <p class="address">东莞市道滘镇马嘶塘25巷2号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E4%BA%91%E5%B1%BF%E7%99%BD%C2%B7%E4%B8%89%E9%A4%90%E8%9E%8D%E5%90%88%E6%96%99%E7%90%86%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E9%81%93%E6%BB%98%E9%95%87%E9%A9%AC%E5%98%B6%E5%A1%9825%E5%B7%B72%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·东城" data-search="东莞·东城 东莞老饭店（君豪店） 东莞市东城中路与东城路交叉口附近 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·东城</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>东莞老饭店（君豪店）</h2>
+      <p class="address">东莞市东城中路与东城路交叉口附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E4%B8%9C%E8%8E%9E%E8%80%81%E9%A5%AD%E5%BA%97%EF%BC%88%E5%90%9B%E8%B1%AA%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E4%B8%9C%E5%9F%8E%E4%B8%AD%E8%B7%AF%E4%B8%8E%E4%B8%9C%E5%9F%8E%E8%B7%AF%E4%BA%A4%E5%8F%89%E5%8F%A3%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·东城" data-search="东莞·东城 海都六福酒家（世博广场店） 东莞市东城路283号世博广场f区4楼 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·东城</span><span>正餐</span><span class="checked">近期可查</span></div>
+      <h2>海都六福酒家（世博广场店）</h2>
+      <p class="address">东莞市东城路283号世博广场F区4楼</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%B5%B7%E9%83%BD%E5%85%AD%E7%A6%8F%E9%85%92%E5%AE%B6%EF%BC%88%E4%B8%96%E5%8D%9A%E5%B9%BF%E5%9C%BA%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E4%B8%9C%E5%9F%8E%E8%B7%AF283%E5%8F%B7%E4%B8%96%E5%8D%9A%E5%B9%BF%E5%9C%BAF%E5%8C%BA4%E6%A5%BC&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·东城" data-search="东莞·东城 黄旗益驿coffee 东莞市东城南路附近 咖啡甜品／饮品 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·东城</span><span>咖啡甜品／饮品</span><span class="pending">待确认</span></div>
+      <h2>黄旗益驿coffee</h2>
+      <p class="address">东莞市东城南路附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%BB%84%E6%97%97%E7%9B%8A%E9%A9%BFcoffee%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E4%B8%9C%E5%9F%8E%E5%8D%97%E8%B7%AF%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·东城" data-search="东莞·东城 金塘宴会中心（东城店） 东莞市东城街道东城路269号世纪广场三楼附近 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·东城</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>金塘宴会中心（东城店）</h2>
+      <p class="address">东莞市东城街道东城路269号世纪广场三楼附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%87%91%E5%A1%98%E5%AE%B4%E4%BC%9A%E4%B8%AD%E5%BF%83%EF%BC%88%E4%B8%9C%E5%9F%8E%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E4%B8%9C%E5%9F%8E%E8%A1%97%E9%81%93%E4%B8%9C%E5%9F%8E%E8%B7%AF269%E5%8F%B7%E4%B8%96%E7%BA%AA%E5%B9%BF%E5%9C%BA%E4%B8%89%E6%A5%BC%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·东城" data-search="东莞·东城 九十叶（民盈国贸城店） 东莞市东城街道民盈国贸城内（楼层资料有1楼／3楼两种说法） 咖啡甜品／饮品 推荐抹茶4号；有人喜欢抹茶茉莉。荔枝新品评价一般，楼层需核实。">
+      <div class="meta"><span>东莞·东城</span><span>咖啡甜品／饮品</span><span class="pending">待确认</span></div>
+      <h2>九十叶（民盈国贸城店）</h2>
+      <p class="address">东莞市东城街道民盈国贸城内（楼层资料有1楼／3楼两种说法）</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>推荐抹茶4号；有人喜欢抹茶茉莉。荔枝新品评价一般，楼层需核实。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E4%B9%9D%E5%8D%81%E5%8F%B6%EF%BC%88%E6%B0%91%E7%9B%88%E5%9B%BD%E8%B4%B8%E5%9F%8E%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E4%B8%9C%E5%9F%8E%E8%A1%97%E9%81%93%E6%B0%91%E7%9B%88%E5%9B%BD%E8%B4%B8%E5%9F%8E%E5%86%85%EF%BC%88%E6%A5%BC%E5%B1%82%E8%B5%84%E6%96%99%E6%9C%891%E6%A5%BC%EF%BC%8F3%E6%A5%BC%E4%B8%A4%E7%A7%8D%E8%AF%B4%E6%B3%95%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·东城" data-search="东莞·东城 绿贝美食（眺景楼店） 东莞市东城街道长发路与黎屋围路交叉口附近 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·东城</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>绿贝美食（眺景楼店）</h2>
+      <p class="address">东莞市东城街道长发路与黎屋围路交叉口附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E7%BB%BF%E8%B4%9D%E7%BE%8E%E9%A3%9F%EF%BC%88%E7%9C%BA%E6%99%AF%E6%A5%BC%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E4%B8%9C%E5%9F%8E%E8%A1%97%E9%81%93%E9%95%BF%E5%8F%91%E8%B7%AF%E4%B8%8E%E9%BB%8E%E5%B1%8B%E5%9B%B4%E8%B7%AF%E4%BA%A4%E5%8F%89%E5%8F%A3%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·东城" data-search="东莞·东城 圣丰盛宴酒家·宴会厅（东城店） 东莞市东城街道东源路金月湾广场 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·东城</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>圣丰盛宴酒家·宴会厅（东城店）</h2>
+      <p class="address">东莞市东城街道东源路金月湾广场</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%9C%A3%E4%B8%B0%E7%9B%9B%E5%AE%B4%E9%85%92%E5%AE%B6%C2%B7%E5%AE%B4%E4%BC%9A%E5%8E%85%EF%BC%88%E4%B8%9C%E5%9F%8E%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E4%B8%9C%E5%9F%8E%E8%A1%97%E9%81%93%E4%B8%9C%E6%BA%90%E8%B7%AF%E9%87%91%E6%9C%88%E6%B9%BE%E5%B9%BF%E5%9C%BA&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·东城" data-search="东莞·东城 天使冰王（花园店） 东莞市东城街道花园新村花园路13号 咖啡甜品／饮品 老店；汇一城店当时已关闭。避坑提醒：有人不推荐芭菲杯。">
+      <div class="meta"><span>东莞·东城</span><span>咖啡甜品／饮品</span><span class="pending">待确认</span></div>
+      <h2>天使冰王（花园店）</h2>
+      <p class="address">东莞市东城街道花园新村花园路13号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>老店；汇一城店当时已关闭。避坑提醒：有人不推荐芭菲杯。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%A4%A9%E4%BD%BF%E5%86%B0%E7%8E%8B%EF%BC%88%E8%8A%B1%E5%9B%AD%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E4%B8%9C%E5%9F%8E%E8%A1%97%E9%81%93%E8%8A%B1%E5%9B%AD%E6%96%B0%E6%9D%91%E8%8A%B1%E5%9B%AD%E8%B7%AF13%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·东城" data-search="东莞·东城 新昌早餐店（东城店） 东莞市东城街道梨川塘湖路2号103室 小吃 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·东城</span><span>小吃</span><span class="checked">近期平台可查</span></div>
+      <h2>新昌早餐店（东城店）</h2>
+      <p class="address">东莞市东城街道梨川塘湖路2号103室</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%96%B0%E6%98%8C%E6%97%A9%E9%A4%90%E5%BA%97%EF%BC%88%E4%B8%9C%E5%9F%8E%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E4%B8%9C%E5%9F%8E%E8%A1%97%E9%81%93%E6%A2%A8%E5%B7%9D%E5%A1%98%E6%B9%96%E8%B7%AF2%E5%8F%B7103%E5%AE%A4&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·东城" data-search="东莞·东城 hey yo喜乳酪（星河城店） 东莞市东城街道东升路229号星河城 咖啡甜品／饮品 乳酪甜品，可作为逛星河城时的甜品备选。">
+      <div class="meta"><span>东莞·东城</span><span>咖啡甜品／饮品</span><span class="pending">待确认</span></div>
+      <h2>HEY YO喜乳酪（星河城店）</h2>
+      <p class="address">东莞市东城街道东升路229号星河城</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>乳酪甜品，可作为逛星河城时的甜品备选。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=HEY%20YO%E5%96%9C%E4%B9%B3%E9%85%AA%EF%BC%88%E6%98%9F%E6%B2%B3%E5%9F%8E%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E4%B8%9C%E5%9F%8E%E8%A1%97%E9%81%93%E4%B8%9C%E5%8D%87%E8%B7%AF229%E5%8F%B7%E6%98%9F%E6%B2%B3%E5%9F%8E&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·莞城" data-search="东莞·莞城 布兰兔的植物庄园（东莞记忆店） 东莞市莞城街道中兴路莞城阮涌小学附近 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·莞城</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>布兰兔的植物庄园（东莞记忆店）</h2>
+      <p class="address">东莞市莞城街道中兴路莞城阮涌小学附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%B8%83%E5%85%B0%E5%85%94%E7%9A%84%E6%A4%8D%E7%89%A9%E5%BA%84%E5%9B%AD%EF%BC%88%E4%B8%9C%E8%8E%9E%E8%AE%B0%E5%BF%86%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E8%8E%9E%E5%9F%8E%E8%A1%97%E9%81%93%E4%B8%AD%E5%85%B4%E8%B7%AF%E8%8E%9E%E5%9F%8E%E9%98%AE%E6%B6%8C%E5%B0%8F%E5%AD%A6%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·莞城" data-search="东莞·莞城 拉丁餐厅·巴西烤肉自助餐（地王广场店） 东莞市莞城街道东纵大道地王广场3楼 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·莞城</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>拉丁餐厅·巴西烤肉自助餐（地王广场店）</h2>
+      <p class="address">东莞市莞城街道东纵大道地王广场3楼</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%8B%89%E4%B8%81%E9%A4%90%E5%8E%85%C2%B7%E5%B7%B4%E8%A5%BF%E7%83%A4%E8%82%89%E8%87%AA%E5%8A%A9%E9%A4%90%EF%BC%88%E5%9C%B0%E7%8E%8B%E5%B9%BF%E5%9C%BA%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E8%8E%9E%E5%9F%8E%E8%A1%97%E9%81%93%E4%B8%9C%E7%BA%B5%E5%A4%A7%E9%81%93%E5%9C%B0%E7%8E%8B%E5%B9%BF%E5%9C%BA3%E6%A5%BC&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·莞城" data-search="东莞·莞城 香玉肠粉店 东莞市莞城街道大横堂三巷13号101室 小吃 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·莞城</span><span>小吃</span><span class="pending">待确认</span></div>
+      <h2>香玉肠粉店</h2>
+      <p class="address">东莞市莞城街道大横堂三巷13号101室</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%A6%99%E7%8E%89%E8%82%A0%E7%B2%89%E5%BA%97%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E8%8E%9E%E5%9F%8E%E8%A1%97%E9%81%93%E5%A4%A7%E6%A8%AA%E5%A0%82%E4%B8%89%E5%B7%B713%E5%8F%B7101%E5%AE%A4&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·莞城" data-search="东莞·莞城 gg back（东莞记忆店） 东莞市莞城街道东莞记忆文化街区（门牌待核实） 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·莞城</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>GG BACK（东莞记忆店）</h2>
+      <p class="address">东莞市莞城街道东莞记忆文化街区（门牌待核实）</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=GG%20BACK%EF%BC%88%E4%B8%9C%E8%8E%9E%E8%AE%B0%E5%BF%86%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E8%8E%9E%E5%9F%8E%E8%A1%97%E9%81%93%E4%B8%9C%E8%8E%9E%E8%AE%B0%E5%BF%86%E6%96%87%E5%8C%96%E8%A1%97%E5%8C%BA%EF%BC%88%E9%97%A8%E7%89%8C%E5%BE%85%E6%A0%B8%E5%AE%9E%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·厚街" data-search="东莞·厚街 石城饭店（厚街广场店） 东莞市厚街镇厚街大西路8号114室 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·厚街</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>石城饭店（厚街广场店）</h2>
+      <p class="address">东莞市厚街镇厚街大西路8号114室</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E7%9F%B3%E5%9F%8E%E9%A5%AD%E5%BA%97%EF%BC%88%E5%8E%9A%E8%A1%97%E5%B9%BF%E5%9C%BA%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%8E%9A%E8%A1%97%E9%95%87%E5%8E%9A%E8%A1%97%E5%A4%A7%E8%A5%BF%E8%B7%AF8%E5%8F%B7114%E5%AE%A4&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·厚街" data-search="东莞·厚街 屿西咖啡·主题创意融合餐厅 东莞市厚街镇（门牌待核实） 咖啡甜品／饮品 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·厚街</span><span>咖啡甜品／饮品</span><span class="pending">待确认</span></div>
+      <h2>屿西咖啡·主题创意融合餐厅</h2>
+      <p class="address">东莞市厚街镇（门牌待核实）</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%B1%BF%E8%A5%BF%E5%92%96%E5%95%A1%C2%B7%E4%B8%BB%E9%A2%98%E5%88%9B%E6%84%8F%E8%9E%8D%E5%90%88%E9%A4%90%E5%8E%85%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%8E%9A%E8%A1%97%E9%95%87%EF%BC%88%E9%97%A8%E7%89%8C%E5%BE%85%E6%A0%B8%E5%AE%9E%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·虎门" data-search="东莞·虎门 地道虎门 东莞市虎门镇王屋向北路附近 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·虎门</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>地道虎门</h2>
+      <p class="address">东莞市虎门镇王屋向北路附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%9C%B0%E9%81%93%E8%99%8E%E9%97%A8%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E8%99%8E%E9%97%A8%E9%95%87%E7%8E%8B%E5%B1%8B%E5%90%91%E5%8C%97%E8%B7%AF%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·虎门" data-search="东莞·虎门 洪记海鲜加工 东莞市虎门镇新港南路与长堤路交叉口附近 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·虎门</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>洪记海鲜加工</h2>
+      <p class="address">东莞市虎门镇新港南路与长堤路交叉口附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%B4%AA%E8%AE%B0%E6%B5%B7%E9%B2%9C%E5%8A%A0%E5%B7%A5%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E8%99%8E%E9%97%A8%E9%95%87%E6%96%B0%E6%B8%AF%E5%8D%97%E8%B7%AF%E4%B8%8E%E9%95%BF%E5%A0%A4%E8%B7%AF%E4%BA%A4%E5%8F%89%E5%8F%A3%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·虎门" data-search="东莞·虎门 湖南麻辣烫（太宝路店） 东莞市虎门镇太宝路13号 小吃 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·虎门</span><span>小吃</span><span class="pending">待确认</span></div>
+      <h2>湖南麻辣烫（太宝路店）</h2>
+      <p class="address">东莞市虎门镇太宝路13号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%B9%96%E5%8D%97%E9%BA%BB%E8%BE%A3%E7%83%AB%EF%BC%88%E5%A4%AA%E5%AE%9D%E8%B7%AF%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E8%99%8E%E9%97%A8%E9%95%87%E5%A4%AA%E5%AE%9D%E8%B7%AF13%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·虎门" data-search="东莞·虎门 家盛大酒楼·虎门宴 东莞市虎门镇虎门大道148号108室 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·虎门</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>家盛大酒楼·虎门宴</h2>
+      <p class="address">东莞市虎门镇虎门大道148号108室</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%AE%B6%E7%9B%9B%E5%A4%A7%E9%85%92%E6%A5%BC%C2%B7%E8%99%8E%E9%97%A8%E5%AE%B4%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E8%99%8E%E9%97%A8%E9%95%87%E8%99%8E%E9%97%A8%E5%A4%A7%E9%81%93148%E5%8F%B7108%E5%AE%A4&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·虎门" data-search="东莞·虎门 金洲辉记食店 东莞市虎门镇角苏南元祖路7号107室 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·虎门</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>金洲辉记食店</h2>
+      <p class="address">东莞市虎门镇角苏南元祖路7号107室</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%87%91%E6%B4%B2%E8%BE%89%E8%AE%B0%E9%A3%9F%E5%BA%97%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E8%99%8E%E9%97%A8%E9%95%87%E8%A7%92%E8%8B%8F%E5%8D%97%E5%85%83%E7%A5%96%E8%B7%AF7%E5%8F%B7107%E5%AE%A4&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·虎门" data-search="东莞·虎门 球记饭店（北栅店） 东莞市虎门镇358省道579号附近 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·虎门</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>球记饭店（北栅店）</h2>
+      <p class="address">东莞市虎门镇358省道579号附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E7%90%83%E8%AE%B0%E9%A5%AD%E5%BA%97%EF%BC%88%E5%8C%97%E6%A0%85%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E8%99%8E%E9%97%A8%E9%95%87358%E7%9C%81%E9%81%93579%E5%8F%B7%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·虎门" data-search="东莞·虎门 新河畔海鲜酒楼（长堤路店） 东莞市虎门镇长堤路19号（近虎门步行街） 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·虎门</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>新河畔海鲜酒楼（长堤路店）</h2>
+      <p class="address">东莞市虎门镇长堤路19号（近虎门步行街）</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%96%B0%E6%B2%B3%E7%95%94%E6%B5%B7%E9%B2%9C%E9%85%92%E6%A5%BC%EF%BC%88%E9%95%BF%E5%A0%A4%E8%B7%AF%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E8%99%8E%E9%97%A8%E9%95%87%E9%95%BF%E5%A0%A4%E8%B7%AF19%E5%8F%B7%EF%BC%88%E8%BF%91%E8%99%8E%E9%97%A8%E6%AD%A5%E8%A1%8C%E8%A1%97%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·虎门" data-search="东莞·虎门 柚幸相遇 东莞市虎门镇长堤路与长运路交叉口附近 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·虎门</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>柚幸相遇</h2>
+      <p class="address">东莞市虎门镇长堤路与长运路交叉口附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%9F%9A%E5%B9%B8%E7%9B%B8%E9%81%87%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E8%99%8E%E9%97%A8%E9%95%87%E9%95%BF%E5%A0%A4%E8%B7%AF%E4%B8%8E%E9%95%BF%E8%BF%90%E8%B7%AF%E4%BA%A4%E5%8F%89%E5%8F%A3%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·寮步" data-search="东莞·寮步 贵州黄牛肉馆（寮步上屯店） 东莞市寮步镇良平路146号135室附近 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·寮步</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>贵州黄牛肉馆（寮步上屯店）</h2>
+      <p class="address">东莞市寮步镇良平路146号135室附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E8%B4%B5%E5%B7%9E%E9%BB%84%E7%89%9B%E8%82%89%E9%A6%86%EF%BC%88%E5%AF%AE%E6%AD%A5%E4%B8%8A%E5%B1%AF%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%AF%AE%E6%AD%A5%E9%95%87%E8%89%AF%E5%B9%B3%E8%B7%AF146%E5%8F%B7135%E5%AE%A4%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·寮步" data-search="东莞·寮步 李友记土鸡煲火锅 东莞市寮步镇金兴路533号 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·寮步</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>李友记土鸡煲火锅</h2>
+      <p class="address">东莞市寮步镇金兴路533号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%9D%8E%E5%8F%8B%E8%AE%B0%E5%9C%9F%E9%B8%A1%E7%85%B2%E7%81%AB%E9%94%85%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%AF%AE%E6%AD%A5%E9%95%87%E9%87%91%E5%85%B4%E8%B7%AF533%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·寮步" data-search="东莞·寮步 旺角宝特色小食店 东莞市寮步镇万威茶餐厅附近（门牌待核实） 小吃 寮步万威茶餐厅附近的小食店，完整店名与门牌仍待确认。">
+      <div class="meta"><span>东莞·寮步</span><span>小吃</span><span class="pending">待确认</span></div>
+      <h2>旺角宝特色小食店</h2>
+      <p class="address">东莞市寮步镇万威茶餐厅附近（门牌待核实）</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>寮步万威茶餐厅附近的小食店，完整店名与门牌仍待确认。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%97%BA%E8%A7%92%E5%AE%9D%E7%89%B9%E8%89%B2%E5%B0%8F%E9%A3%9F%E5%BA%97%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%AF%AE%E6%AD%A5%E9%95%87%E4%B8%87%E5%A8%81%E8%8C%B6%E9%A4%90%E5%8E%85%E9%99%84%E8%BF%91%EF%BC%88%E9%97%A8%E7%89%8C%E5%BE%85%E6%A0%B8%E5%AE%9E%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·南城" data-search="东莞·南城 翠蛙香·田鸡老字号（西平店） 东莞市南城街道西平社区东莞大道旁（门牌待核实） 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·南城</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>翠蛙香·田鸡老字号（西平店）</h2>
+      <p class="address">东莞市南城街道西平社区东莞大道旁（门牌待核实）</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E7%BF%A0%E8%9B%99%E9%A6%99%C2%B7%E7%94%B0%E9%B8%A1%E8%80%81%E5%AD%97%E5%8F%B7%EF%BC%88%E8%A5%BF%E5%B9%B3%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E8%A5%BF%E5%B9%B3%E7%A4%BE%E5%8C%BA%E4%B8%9C%E8%8E%9E%E5%A4%A7%E9%81%93%E6%97%81%EF%BC%88%E9%97%A8%E7%89%8C%E5%BE%85%E6%A0%B8%E5%AE%9E%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·南城" data-search="东莞·南城 肥波烧烤·露营烧烤·营地烧烤（西平店） 东莞市南城街道西平三路15号洛菲斯产业园108室附近 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·南城</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>肥波烧烤·露营烧烤·营地烧烤（西平店）</h2>
+      <p class="address">东莞市南城街道西平三路15号洛菲斯产业园108室附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E8%82%A5%E6%B3%A2%E7%83%A7%E7%83%A4%C2%B7%E9%9C%B2%E8%90%A5%E7%83%A7%E7%83%A4%C2%B7%E8%90%A5%E5%9C%B0%E7%83%A7%E7%83%A4%EF%BC%88%E8%A5%BF%E5%B9%B3%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E8%A5%BF%E5%B9%B3%E4%B8%89%E8%B7%AF15%E5%8F%B7%E6%B4%9B%E8%8F%B2%E6%96%AF%E4%BA%A7%E4%B8%9A%E5%9B%AD108%E5%AE%A4%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·南城" data-search="东莞·南城 郭璐璐·一头牛烤肉酒厂（南城店） 东莞市南城街道袁屋边盈锋市场公寓北路2号附近 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·南城</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>郭璐璐·一头牛烤肉酒厂（南城店）</h2>
+      <p class="address">东莞市南城街道袁屋边盈锋市场公寓北路2号附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%83%AD%E7%92%90%E7%92%90%C2%B7%E4%B8%80%E5%A4%B4%E7%89%9B%E7%83%A4%E8%82%89%E9%85%92%E5%8E%82%EF%BC%88%E5%8D%97%E5%9F%8E%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E8%A2%81%E5%B1%8B%E8%BE%B9%E7%9B%88%E9%94%8B%E5%B8%82%E5%9C%BA%E5%85%AC%E5%AF%93%E5%8C%97%E8%B7%AF2%E5%8F%B7%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·南城" data-search="东莞·南城 合味道娟姨美食（西平店） 东莞市南城街道宏伟路新中银·金色华庭附近 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·南城</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>合味道娟姨美食（西平店）</h2>
+      <p class="address">东莞市南城街道宏伟路新中银·金色华庭附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%90%88%E5%91%B3%E9%81%93%E5%A8%9F%E5%A7%A8%E7%BE%8E%E9%A3%9F%EF%BC%88%E8%A5%BF%E5%B9%B3%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E5%AE%8F%E4%BC%9F%E8%B7%AF%E6%96%B0%E4%B8%AD%E9%93%B6%C2%B7%E9%87%91%E8%89%B2%E5%8D%8E%E5%BA%AD%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·南城" data-search="东莞·南城 胜材韬炭火鸡煲·羊肉煲（南城店） 东莞市南城街道莞太路榕树下体验广场附近 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·南城</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>胜材韬炭火鸡煲·羊肉煲（南城店）</h2>
+      <p class="address">东莞市南城街道莞太路榕树下体验广场附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E8%83%9C%E6%9D%90%E9%9F%AC%E7%82%AD%E7%81%AB%E9%B8%A1%E7%85%B2%C2%B7%E7%BE%8A%E8%82%89%E7%85%B2%EF%BC%88%E5%8D%97%E5%9F%8E%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E8%8E%9E%E5%A4%AA%E8%B7%AF%E6%A6%95%E6%A0%91%E4%B8%8B%E4%BD%93%E9%AA%8C%E5%B9%BF%E5%9C%BA%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·区域待确认" data-search="东莞·区域待确认 晨光食馆 东莞市（具体区域待核实） 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·区域待确认</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>晨光食馆</h2>
+      <p class="address">东莞市（具体区域待核实）</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%99%A8%E5%85%89%E9%A3%9F%E9%A6%86%20%E4%B8%9C%E8%8E%9E%E5%B8%82%EF%BC%88%E5%85%B7%E4%BD%93%E5%8C%BA%E5%9F%9F%E5%BE%85%E6%A0%B8%E5%AE%9E%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·区域待确认" data-search="东莞·区域待确认 豪胜饮食店 东莞市兴隆街十二巷与泰新路交叉口附近 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·区域待确认</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>豪胜饮食店</h2>
+      <p class="address">东莞市兴隆街十二巷与泰新路交叉口附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E8%B1%AA%E8%83%9C%E9%A5%AE%E9%A3%9F%E5%BA%97%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%85%B4%E9%9A%86%E8%A1%97%E5%8D%81%E4%BA%8C%E5%B7%B7%E4%B8%8E%E6%B3%B0%E6%96%B0%E8%B7%AF%E4%BA%A4%E5%8F%89%E5%8F%A3%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·区域待确认" data-search="东莞·区域待确认 火记 fookei（石井文体城店） 东莞市石井文体广场卓峰花园7栋111室 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·区域待确认</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>火记 Fookei（石井文体城店）</h2>
+      <p class="address">东莞市石井文体广场卓峰花园7栋111室</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E7%81%AB%E8%AE%B0%20Fookei%EF%BC%88%E7%9F%B3%E4%BA%95%E6%96%87%E4%BD%93%E5%9F%8E%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E7%9F%B3%E4%BA%95%E6%96%87%E4%BD%93%E5%B9%BF%E5%9C%BA%E5%8D%93%E5%B3%B0%E8%8A%B1%E5%9B%AD7%E6%A0%8B111%E5%AE%A4&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·区域待确认" data-search="东莞·区域待确认 莲子乡情龙船饭 东莞市滨江西路与莲子坊商业街交叉口附近 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·区域待确认</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>莲子乡情龙船饭</h2>
+      <p class="address">东莞市滨江西路与莲子坊商业街交叉口附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E8%8E%B2%E5%AD%90%E4%B9%A1%E6%83%85%E9%BE%99%E8%88%B9%E9%A5%AD%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E6%BB%A8%E6%B1%9F%E8%A5%BF%E8%B7%AF%E4%B8%8E%E8%8E%B2%E5%AD%90%E5%9D%8A%E5%95%86%E4%B8%9A%E8%A1%97%E4%BA%A4%E5%8F%89%E5%8F%A3%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·区域待确认" data-search="东莞·区域待确认 梅林农庄 东莞市莞长路海华加油站附近 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·区域待确认</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>梅林农庄</h2>
+      <p class="address">东莞市莞长路海华加油站附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%A2%85%E6%9E%97%E5%86%9C%E5%BA%84%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E8%8E%9E%E9%95%BF%E8%B7%AF%E6%B5%B7%E5%8D%8E%E5%8A%A0%E6%B2%B9%E7%AB%99%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·区域待确认" data-search="东莞·区域待确认 鑫馨·文胸粉 东莞市兴塘旗峰新村十九巷3号 小吃 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·区域待确认</span><span>小吃</span><span class="pending">待确认</span></div>
+      <h2>鑫馨·文胸粉</h2>
+      <p class="address">东莞市兴塘旗峰新村十九巷3号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%91%AB%E9%A6%A8%C2%B7%E6%96%87%E8%83%B8%E7%B2%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%85%B4%E5%A1%98%E6%97%97%E5%B3%B0%E6%96%B0%E6%9D%91%E5%8D%81%E4%B9%9D%E5%B7%B73%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·区域待确认" data-search="东莞·区域待确认 兴隆荔枝柴烧鹅（广东台采访非遗店） 东莞市长盛南路308号 小吃 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·区域待确认</span><span>小吃</span><span class="pending">待确认</span></div>
+      <h2>兴隆荔枝柴烧鹅（广东台采访非遗店）</h2>
+      <p class="address">东莞市长盛南路308号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%85%B4%E9%9A%86%E8%8D%94%E6%9E%9D%E6%9F%B4%E7%83%A7%E9%B9%85%EF%BC%88%E5%B9%BF%E4%B8%9C%E5%8F%B0%E9%87%87%E8%AE%BF%E9%9D%9E%E9%81%97%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E9%95%BF%E7%9B%9B%E5%8D%97%E8%B7%AF308%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·区域待确认" data-search="东莞·区域待确认 永兴砂锅麻辣烫 东莞市上角组三街与环区路交叉口附近 小吃 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·区域待确认</span><span>小吃</span><span class="pending">待确认</span></div>
+      <h2>永兴砂锅麻辣烫</h2>
+      <p class="address">东莞市上角组三街与环区路交叉口附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%B0%B8%E5%85%B4%E7%A0%82%E9%94%85%E9%BA%BB%E8%BE%A3%E7%83%AB%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E4%B8%8A%E8%A7%92%E7%BB%84%E4%B8%89%E8%A1%97%E4%B8%8E%E7%8E%AF%E5%8C%BA%E8%B7%AF%E4%BA%A4%E5%8F%89%E5%8F%A3%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·区域待确认" data-search="东莞·区域待确认 wells cafe&amp;eatery（东莞店） 东莞市（完整地址待核实） 咖啡甜品／饮品 意面也被明确推荐，特别提到番茄口味。">
+      <div class="meta"><span>东莞·区域待确认</span><span>咖啡甜品／饮品</span><span class="pending">待确认</span></div>
+      <h2>wells cafe&amp;eatery（东莞店）</h2>
+      <p class="address">东莞市（完整地址待核实）</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>意面也被明确推荐，特别提到番茄口味。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=wells%20cafe%26eatery%EF%BC%88%E4%B8%9C%E8%8E%9E%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%EF%BC%88%E5%AE%8C%E6%95%B4%E5%9C%B0%E5%9D%80%E5%BE%85%E6%A0%B8%E5%AE%9E%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·沙田" data-search="东莞·沙田 初茶·chuchat（沙田河畔店） 东莞市沙田镇中心区沙田大道旁（门牌待核实） 咖啡甜品／饮品 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·沙田</span><span>咖啡甜品／饮品</span><span class="pending">待确认</span></div>
+      <h2>初茶·CHUCHAT（沙田河畔店）</h2>
+      <p class="address">东莞市沙田镇中心区沙田大道旁（门牌待核实）</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%88%9D%E8%8C%B6%C2%B7CHUCHAT%EF%BC%88%E6%B2%99%E7%94%B0%E6%B2%B3%E7%95%94%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E6%B2%99%E7%94%B0%E9%95%87%E4%B8%AD%E5%BF%83%E5%8C%BA%E6%B2%99%E7%94%B0%E5%A4%A7%E9%81%93%E6%97%81%EF%BC%88%E9%97%A8%E7%89%8C%E5%BE%85%E6%A0%B8%E5%AE%9E%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·沙田" data-search="东莞·沙田 辉记猪粥尝乐（沙田店） 东莞市沙田镇阁西银通路1号 小吃 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·沙田</span><span>小吃</span><span class="pending">待确认</span></div>
+      <h2>辉记猪粥尝乐（沙田店）</h2>
+      <p class="address">东莞市沙田镇阁西银通路1号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E8%BE%89%E8%AE%B0%E7%8C%AA%E7%B2%A5%E5%B0%9D%E4%B9%90%EF%BC%88%E6%B2%99%E7%94%B0%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E6%B2%99%E7%94%B0%E9%95%87%E9%98%81%E8%A5%BF%E9%93%B6%E9%80%9A%E8%B7%AF1%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·石碣" data-search="东莞·石碣 自园肠粉 东莞市石碣镇崇焕东路13号101室 小吃 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·石碣</span><span>小吃</span><span class="pending">待确认</span></div>
+      <h2>自园肠粉</h2>
+      <p class="address">东莞市石碣镇崇焕东路13号101室</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E8%87%AA%E5%9B%AD%E8%82%A0%E7%B2%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E7%9F%B3%E7%A2%A3%E9%95%87%E5%B4%87%E7%84%95%E4%B8%9C%E8%B7%AF13%E5%8F%B7101%E5%AE%A4&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·石龙" data-search="东莞·石龙 泰华茶餐厅（石龙黄州店） 东莞市石龙镇龙城二路1号110室之1 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·石龙</span><span>正餐</span><span class="checked">近期可查</span></div>
+      <h2>泰华茶餐厅（石龙黄州店）</h2>
+      <p class="address">东莞市石龙镇龙城二路1号110室之1</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%B3%B0%E5%8D%8E%E8%8C%B6%E9%A4%90%E5%8E%85%EF%BC%88%E7%9F%B3%E9%BE%99%E9%BB%84%E5%B7%9E%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E7%9F%B3%E9%BE%99%E9%95%87%E9%BE%99%E5%9F%8E%E4%BA%8C%E8%B7%AF1%E5%8F%B7110%E5%AE%A4%E4%B9%8B1&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·石龙" data-search="东莞·石龙 泰华茶餐厅（石龙老城店） 东莞市石龙镇广源路93号半岛商务中心1楼附近 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·石龙</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>泰华茶餐厅（石龙老城店）</h2>
+      <p class="address">东莞市石龙镇广源路93号半岛商务中心1楼附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%B3%B0%E5%8D%8E%E8%8C%B6%E9%A4%90%E5%8E%85%EF%BC%88%E7%9F%B3%E9%BE%99%E8%80%81%E5%9F%8E%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E7%9F%B3%E9%BE%99%E9%95%87%E5%B9%BF%E6%BA%90%E8%B7%AF93%E5%8F%B7%E5%8D%8A%E5%B2%9B%E5%95%86%E5%8A%A1%E4%B8%AD%E5%BF%831%E6%A5%BC%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·松山湖" data-search="东莞·松山湖 麦当劳餐厅（松山湖天安云谷店） 东莞市工业南路松山湖天安云谷 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·松山湖</span><span>正餐</span><span class="checked">近期经营线索</span></div>
+      <h2>麦当劳餐厅（松山湖天安云谷店）</h2>
+      <p class="address">东莞市工业南路松山湖天安云谷</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%BA%A6%E5%BD%93%E5%8A%B3%E9%A4%90%E5%8E%85%EF%BC%88%E6%9D%BE%E5%B1%B1%E6%B9%96%E5%A4%A9%E5%AE%89%E4%BA%91%E8%B0%B7%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%B7%A5%E4%B8%9A%E5%8D%97%E8%B7%AF%E6%9D%BE%E5%B1%B1%E6%B9%96%E5%A4%A9%E5%AE%89%E4%BA%91%E8%B0%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·万江" data-search="东莞·万江 明月居花园餐厅（万江店） 东莞市万江街道水蛇涌社区商业街1号之一 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·万江</span><span>正餐</span><span class="checked">官方活动确认</span></div>
+      <h2>明月居花园餐厅（万江店）</h2>
+      <p class="address">东莞市万江街道水蛇涌社区商业街1号之一</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%98%8E%E6%9C%88%E5%B1%85%E8%8A%B1%E5%9B%AD%E9%A4%90%E5%8E%85%EF%BC%88%E4%B8%87%E6%B1%9F%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E4%B8%87%E6%B1%9F%E8%A1%97%E9%81%93%E6%B0%B4%E8%9B%87%E6%B6%8C%E7%A4%BE%E5%8C%BA%E5%95%86%E4%B8%9A%E8%A1%971%E5%8F%B7%E4%B9%8B%E4%B8%80&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·万江" data-search="东莞·万江 农家酒楼（万江总店） 东莞市万江街道万江路1号 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·万江</span><span>正餐</span><span class="checked">官方活动确认</span></div>
+      <h2>农家酒楼（万江总店）</h2>
+      <p class="address">东莞市万江街道万江路1号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%86%9C%E5%AE%B6%E9%85%92%E6%A5%BC%EF%BC%88%E4%B8%87%E6%B1%9F%E6%80%BB%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E4%B8%87%E6%B1%9F%E8%A1%97%E9%81%93%E4%B8%87%E6%B1%9F%E8%B7%AF1%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·万江" data-search="东莞·万江 祥福小食 东莞市万江街道金曲路25号103室 小吃 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·万江</span><span>小吃</span><span class="pending">待确认</span></div>
+      <h2>祥福小食</h2>
+      <p class="address">东莞市万江街道金曲路25号103室</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E7%A5%A5%E7%A6%8F%E5%B0%8F%E9%A3%9F%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E4%B8%87%E6%B1%9F%E8%A1%97%E9%81%93%E9%87%91%E6%9B%B2%E8%B7%AF25%E5%8F%B7103%E5%AE%A4&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·万江" data-search="东莞·万江 胀胀豚·河豚鲜味馆（华南mall店） 东莞市万江街道华南mall主题购物广场12栋附近 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·万江</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>胀胀豚·河豚鲜味馆（华南mall店）</h2>
+      <p class="address">东莞市万江街道华南mall主题购物广场12栋附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E8%83%80%E8%83%80%E8%B1%9A%C2%B7%E6%B2%B3%E8%B1%9A%E9%B2%9C%E5%91%B3%E9%A6%86%EF%BC%88%E5%8D%8E%E5%8D%97mall%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E4%B8%87%E6%B1%9F%E8%A1%97%E9%81%93%E5%8D%8E%E5%8D%97mall%E4%B8%BB%E9%A2%98%E8%B4%AD%E7%89%A9%E5%B9%BF%E5%9C%BA12%E6%A0%8B%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·万江" data-search="东莞·万江 珍之宝酒楼（万江雅致店） 东莞市万江街道东福商业街一横街2-8号 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·万江</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>珍之宝酒楼（万江雅致店）</h2>
+      <p class="address">东莞市万江街道东福商业街一横街2-8号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E7%8F%8D%E4%B9%8B%E5%AE%9D%E9%85%92%E6%A5%BC%EF%BC%88%E4%B8%87%E6%B1%9F%E9%9B%85%E8%87%B4%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E4%B8%87%E6%B1%9F%E8%A1%97%E9%81%93%E4%B8%9C%E7%A6%8F%E5%95%86%E4%B8%9A%E8%A1%97%E4%B8%80%E6%A8%AA%E8%A1%972-8%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·中堂" data-search="东莞·中堂 三味鲜鲍鱼鸡煲（蕉利综合市场店） 东莞市中堂镇蕉利村蕉利综合市场正门2号 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>东莞·中堂</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>三味鲜鲍鱼鸡煲（蕉利综合市场店）</h2>
+      <p class="address">东莞市中堂镇蕉利村蕉利综合市场正门2号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E4%B8%89%E5%91%B3%E9%B2%9C%E9%B2%8D%E9%B1%BC%E9%B8%A1%E7%85%B2%EF%BC%88%E8%95%89%E5%88%A9%E7%BB%BC%E5%90%88%E5%B8%82%E5%9C%BA%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E4%B8%AD%E5%A0%82%E9%95%87%E8%95%89%E5%88%A9%E6%9D%91%E8%95%89%E5%88%A9%E7%BB%BC%E5%90%88%E5%B8%82%E5%9C%BA%E6%AD%A3%E9%97%A82%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="澳门" data-search="澳门 逸日（澳门咖啡蛋糕店，完整店名待核实） 澳门（完整店名与地址待核实） 咖啡甜品／饮品 咖啡、蛋糕和面包；完整店名与门牌仍待确认。">
+      <div class="meta"><span>澳门</span><span>咖啡甜品／饮品</span><span class="pending">待确认</span></div>
+      <h2>逸日（澳门咖啡蛋糕店，完整店名待核实）</h2>
+      <p class="address">澳门（完整店名与地址待核实）</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>咖啡、蛋糕和面包；完整店名与门牌仍待确认。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%80%B8%E6%97%A5%EF%BC%88%E6%BE%B3%E9%97%A8%E5%92%96%E5%95%A1%E8%9B%8B%E7%B3%95%E5%BA%97%EF%BC%8C%E5%AE%8C%E6%95%B4%E5%BA%97%E5%90%8D%E5%BE%85%E6%A0%B8%E5%AE%9E%EF%BC%89%20%E6%BE%B3%E9%97%A8%EF%BC%88%E5%AE%8C%E6%95%B4%E5%BA%97%E5%90%8D%E4%B8%8E%E5%9C%B0%E5%9D%80%E5%BE%85%E6%A0%B8%E5%AE%9E%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="佛山" data-search="佛山 竹乡楼（澜石一路） 佛山市禅城区宝源西街与金澜南路交叉口附近 正餐 具体招牌与使用建议待继续补充">
+      <div class="meta"><span>佛山</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>竹乡楼（澜石一路）</h2>
+      <p class="address">佛山市禅城区宝源西街与金澜南路交叉口附近</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>具体招牌与使用建议待继续补充</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E7%AB%B9%E4%B9%A1%E6%A5%BC%EF%BC%88%E6%BE%9C%E7%9F%B3%E4%B8%80%E8%B7%AF%EF%BC%89%20%E4%BD%9B%E5%B1%B1%E5%B8%82%E7%A6%85%E5%9F%8E%E5%8C%BA%E5%AE%9D%E6%BA%90%E8%A5%BF%E8%A1%97%E4%B8%8E%E9%87%91%E6%BE%9C%E5%8D%97%E8%B7%AF%E4%BA%A4%E5%8F%89%E5%8F%A3%E9%99%84%E8%BF%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="釜山" data-search="釜山 青沙浦咖啡街 韩国釜山青沙浦 咖啡甜品／饮品 适合海边咖啡与休息。">
+      <div class="meta"><span>釜山</span><span>咖啡甜品／饮品</span><span class="pending">待确认</span></div>
+      <h2>青沙浦咖啡街</h2>
+      <p class="address">韩国釜山青沙浦</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>适合海边咖啡与休息。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%9D%92%E6%B2%99%E6%B5%A6%E5%92%96%E5%95%A1%E8%A1%97%20%E9%9F%A9%E5%9B%BD%E9%87%9C%E5%B1%B1%E9%9D%92%E6%B2%99%E6%B5%A6&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="首尔" data-search="首尔 圣水洞咖啡街 韩国首尔圣水洞 咖啡甜品／饮品 适合咖啡、甜品、拍照与逛街。">
+      <div class="meta"><span>首尔</span><span>咖啡甜品／饮品</span><span class="pending">待确认</span></div>
+      <h2>圣水洞咖啡街</h2>
+      <p class="address">韩国首尔圣水洞</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>适合咖啡、甜品、拍照与逛街。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%9C%A3%E6%B0%B4%E6%B4%9E%E5%92%96%E5%95%A1%E8%A1%97%20%E9%9F%A9%E5%9B%BD%E9%A6%96%E5%B0%94%E5%9C%A3%E6%B0%B4%E6%B4%9E&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·南城" data-search="东莞·南城 may whisky bar（南城店） 东莞市南城街道东莞大道南城段12号 cpark 项目7栋102室 酒吧夜生活 以特调鸡尾酒、威士忌和下班后小酌为主，人均约86元；营业时段仍以当日门店公示为准。">
+      <div class="meta"><span>东莞·南城</span><span>酒吧夜生活</span><span class="checked">近期可查</span></div>
+      <h2>MAY WHISKY BAR（南城店）</h2>
+      <p class="address">东莞市南城街道东莞大道南城段12号 CPARK 项目7栋102室</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>以特调鸡尾酒、威士忌和下班后小酌为主，人均约86元；营业时段仍以当日门店公示为准。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=MAY%20WHISKY%20BAR%EF%BC%88%E5%8D%97%E5%9F%8E%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E4%B8%9C%E8%8E%9E%E5%A4%A7%E9%81%93%E5%8D%97%E5%9F%8E%E6%AE%B512%E5%8F%B7%20CPARK%20%E9%A1%B9%E7%9B%AE7%E6%A0%8B102%E5%AE%A4&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="顺德" data-search="顺德 子曰·礼茶居（大良黄金广场店） 佛山市顺德区大良街道太艮路11号黄金商业广场（具体铺位待确认） 正餐 粤式早茶、点心与围餐；品牌可确认，黄金广场分店当前经营状态待确认。">
+      <div class="meta"><span>顺德</span><span>正餐</span><span class="pending">待确认</span></div>
+      <h2>子曰·礼茶居（大良黄金广场店）</h2>
+      <p class="address">佛山市顺德区大良街道太艮路11号黄金商业广场（具体铺位待确认）</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>粤式早茶、点心与围餐；品牌可确认，黄金广场分店当前经营状态待确认。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%AD%90%E6%9B%B0%C2%B7%E7%A4%BC%E8%8C%B6%E5%B1%85%EF%BC%88%E5%A4%A7%E8%89%AF%E9%BB%84%E9%87%91%E5%B9%BF%E5%9C%BA%E5%BA%97%EF%BC%89%20%E4%BD%9B%E5%B1%B1%E5%B8%82%E9%A1%BA%E5%BE%B7%E5%8C%BA%E5%A4%A7%E8%89%AF%E8%A1%97%E9%81%93%E5%A4%AA%E8%89%AE%E8%B7%AF11%E5%8F%B7%E9%BB%84%E9%87%91%E5%95%86%E4%B8%9A%E5%B9%BF%E5%9C%BA%EF%BC%88%E5%85%B7%E4%BD%93%E9%93%BA%E4%BD%8D%E5%BE%85%E7%A1%AE%E8%AE%A4%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·道滘" data-search="东莞·道滘 塔斯汀中国汉堡（道滘商业广场店） 东莞市道滘镇振兴路东199号113室 小吃 手擀现烤中国汉堡、炸鸡与小食；该分店当前经营状态待确认。">
+      <div class="meta"><span>东莞·道滘</span><span>小吃</span><span class="pending">待确认</span></div>
+      <h2>塔斯汀中国汉堡（道滘商业广场店）</h2>
+      <p class="address">东莞市道滘镇振兴路东199号113室</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>手擀现烤中国汉堡、炸鸡与小食；该分店当前经营状态待确认。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%A1%94%E6%96%AF%E6%B1%80%E4%B8%AD%E5%9B%BD%E6%B1%89%E5%A0%A1%EF%BC%88%E9%81%93%E6%BB%98%E5%95%86%E4%B8%9A%E5%B9%BF%E5%9C%BA%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E9%81%93%E6%BB%98%E9%95%87%E6%8C%AF%E5%85%B4%E8%B7%AF%E4%B8%9C199%E5%8F%B7113%E5%AE%A4&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·南城" data-search="东莞·南城 nightfall r&amp;b bar 东莞市南城街道鸿福路东莞市民服务中心b1层一带（具体铺位待确认） 酒吧夜生活 r&amp;b 音乐酒吧与夜生活地点；完整铺位和当前营业状态待确认。">
+      <div class="meta"><span>东莞·南城</span><span>酒吧夜生活</span><span class="pending">待确认</span></div>
+      <h2>Nightfall R&amp;B BAR</h2>
+      <p class="address">东莞市南城街道鸿福路东莞市民服务中心B1层一带（具体铺位待确认）</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>R&amp;B 音乐酒吧与夜生活地点；完整铺位和当前营业状态待确认。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=Nightfall%20R%26B%20BAR%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E9%B8%BF%E7%A6%8F%E8%B7%AF%E4%B8%9C%E8%8E%9E%E5%B8%82%E6%B0%91%E6%9C%8D%E5%8A%A1%E4%B8%AD%E5%BF%83B1%E5%B1%82%E4%B8%80%E5%B8%A6%EF%BC%88%E5%85%B7%E4%BD%93%E9%93%BA%E4%BD%8D%E5%BE%85%E7%A1%AE%E8%AE%A4%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·常平" data-search="东莞·常平 中恒华（骏宏广场店，名称待确认） 东莞市常平镇振兴三街骏宏广场一带 待确认 原定位名称可能存在识别误差，暂不判断为餐厅；保留地点，等待完整招牌或定位详情。">
+      <div class="meta"><span>东莞·常平</span><span>待确认</span><span class="pending">待确认</span></div>
+      <h2>中恒华（骏宏广场店，名称待确认）</h2>
+      <p class="address">东莞市常平镇振兴三街骏宏广场一带</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>原定位名称可能存在识别误差，暂不判断为餐厅；保留地点，等待完整招牌或定位详情。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E4%B8%AD%E6%81%92%E5%8D%8E%EF%BC%88%E9%AA%8F%E5%AE%8F%E5%B9%BF%E5%9C%BA%E5%BA%97%EF%BC%8C%E5%90%8D%E7%A7%B0%E5%BE%85%E7%A1%AE%E8%AE%A4%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%B8%B8%E5%B9%B3%E9%95%87%E6%8C%AF%E5%85%B4%E4%B8%89%E8%A1%97%E9%AA%8F%E5%AE%8F%E5%B9%BF%E5%9C%BA%E4%B8%80%E5%B8%A6&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="香格里拉" data-search="香格里拉 无底湖风景区 云南省迪庆藏族自治州香格里拉市 景点 高原湖泊与自然风光目的地；出发前确认天气、路况和开放安排。">
+      <div class="meta"><span>香格里拉</span><span>景点</span><span class="pending">待确认</span></div>
+      <h2>无底湖风景区</h2>
+      <p class="address">云南省迪庆藏族自治州香格里拉市</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>高原湖泊与自然风光目的地；出发前确认天气、路况和开放安排。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%97%A0%E5%BA%95%E6%B9%96%E9%A3%8E%E6%99%AF%E5%8C%BA%20%E4%BA%91%E5%8D%97%E7%9C%81%E8%BF%AA%E5%BA%86%E8%97%8F%E6%97%8F%E8%87%AA%E6%B2%BB%E5%B7%9E%E9%A6%99%E6%A0%BC%E9%87%8C%E6%8B%89%E5%B8%82&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="昆明" data-search="昆明 滇池 云南省昆明市西山区兴体路10号一带 景点 适合湖景、散步与昆明旅行路线安排。">
+      <div class="meta"><span>昆明</span><span>景点</span><span class="pending">待确认</span></div>
+      <h2>滇池</h2>
+      <p class="address">云南省昆明市西山区兴体路10号一带</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>适合湖景、散步与昆明旅行路线安排。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%BB%87%E6%B1%A0%20%E4%BA%91%E5%8D%97%E7%9C%81%E6%98%86%E6%98%8E%E5%B8%82%E8%A5%BF%E5%B1%B1%E5%8C%BA%E5%85%B4%E4%BD%93%E8%B7%AF10%E5%8F%B7%E4%B8%80%E5%B8%A6&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·东城" data-search="东莞·东城 东莞虎英郊野公园 东莞市东城街道黄旗山麓 景点 城市郊野公园，适合散步、轻徒步和顺路休闲。">
+      <div class="meta"><span>东莞·东城</span><span>景点</span><span class="pending">待确认</span></div>
+      <h2>东莞虎英郊野公园</h2>
+      <p class="address">东莞市东城街道黄旗山麓</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>城市郊野公园，适合散步、轻徒步和顺路休闲。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E4%B8%9C%E8%8E%9E%E8%99%8E%E8%8B%B1%E9%83%8A%E9%87%8E%E5%85%AC%E5%9B%AD%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E4%B8%9C%E5%9F%8E%E8%A1%97%E9%81%93%E9%BB%84%E6%97%97%E5%B1%B1%E9%BA%93&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="顺德" data-search="顺德 逢简水乡 佛山市顺德区杏坛镇逢简村 景点 岭南水乡、古桥与河涌风光，可与顺德美食安排在同一天。">
+      <div class="meta"><span>顺德</span><span>景点</span><span class="pending">待确认</span></div>
+      <h2>逢简水乡</h2>
+      <p class="address">佛山市顺德区杏坛镇逢简村</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>岭南水乡、古桥与河涌风光，可与顺德美食安排在同一天。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%80%A2%E7%AE%80%E6%B0%B4%E4%B9%A1%20%E4%BD%9B%E5%B1%B1%E5%B8%82%E9%A1%BA%E5%BE%B7%E5%8C%BA%E6%9D%8F%E5%9D%9B%E9%95%87%E9%80%A2%E7%AE%80%E6%9D%91&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·清溪" data-search="东莞·清溪 银瓶山森林公园 东莞市清溪镇银瓶山森林公园 景点 森林徒步与登山目的地，出发前确认园区开放、天气和体力安排。">
+      <div class="meta"><span>东莞·清溪</span><span>景点</span><span class="pending">待确认</span></div>
+      <h2>银瓶山森林公园</h2>
+      <p class="address">东莞市清溪镇银瓶山森林公园</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>森林徒步与登山目的地，出发前确认园区开放、天气和体力安排。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%93%B6%E7%93%B6%E5%B1%B1%E6%A3%AE%E6%9E%97%E5%85%AC%E5%9B%AD%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E6%B8%85%E6%BA%AA%E9%95%87%E9%93%B6%E7%93%B6%E5%B1%B1%E6%A3%AE%E6%9E%97%E5%85%AC%E5%9B%AD&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·南城" data-search="东莞·南城 水濂山湖 东莞市南城街道水濂公园路 景点 湖景与郊野休闲区域，适合南城周边半日路线。">
+      <div class="meta"><span>东莞·南城</span><span>景点</span><span class="pending">待确认</span></div>
+      <h2>水濂山湖</h2>
+      <p class="address">东莞市南城街道水濂公园路</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>湖景与郊野休闲区域，适合南城周边半日路线。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%B0%B4%E6%BF%82%E5%B1%B1%E6%B9%96%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E6%B0%B4%E6%BF%82%E5%85%AC%E5%9B%AD%E8%B7%AF&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·道滘" data-search="东莞·道滘 粤晖园 东莞市道滘镇粤晖路1号 景点 岭南园林景区，可与道滘美食和周边水乡路线组合。">
+      <div class="meta"><span>东莞·道滘</span><span>景点</span><span class="pending">待确认</span></div>
+      <h2>粤晖园</h2>
+      <p class="address">东莞市道滘镇粤晖路1号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>岭南园林景区，可与道滘美食和周边水乡路线组合。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E7%B2%A4%E6%99%96%E5%9B%AD%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E9%81%93%E6%BB%98%E9%95%87%E7%B2%A4%E6%99%96%E8%B7%AF1%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="深圳" data-search="深圳 阿卡那拉琉璃海度假区 深圳市大鹏新区南澳街道南隆社区洋畴湾一带 景点 海景度假与拍照目的地；具体入园、停车和预约安排出发前确认。">
+      <div class="meta"><span>深圳</span><span>景点</span><span class="pending">待确认</span></div>
+      <h2>阿卡那拉琉璃海度假区</h2>
+      <p class="address">深圳市大鹏新区南澳街道南隆社区洋畴湾一带</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>海景度假与拍照目的地；具体入园、停车和预约安排出发前确认。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%98%BF%E5%8D%A1%E9%82%A3%E6%8B%89%E7%90%89%E7%92%83%E6%B5%B7%E5%BA%A6%E5%81%87%E5%8C%BA%20%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%A4%A7%E9%B9%8F%E6%96%B0%E5%8C%BA%E5%8D%97%E6%BE%B3%E8%A1%97%E9%81%93%E5%8D%97%E9%9A%86%E7%A4%BE%E5%8C%BA%E6%B4%8B%E7%95%B4%E6%B9%BE%E4%B8%80%E5%B8%A6&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="惠州" data-search="惠州 南昆山暖舍山栖野奢温泉溯溪民宿 惠州市龙门县永汉镇锦城村委麻布坑尾王氏一带 住宿 温泉、溯溪与山野度假型民宿，预订前确认房型、温泉使用和退改规则。">
+      <div class="meta"><span>惠州</span><span>住宿</span><span class="pending">待确认</span></div>
+      <h2>南昆山暖舍山栖野奢温泉溯溪民宿</h2>
+      <p class="address">惠州市龙门县永汉镇锦城村委麻布坑尾王氏一带</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>温泉、溯溪与山野度假型民宿，预订前确认房型、温泉使用和退改规则。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%8D%97%E6%98%86%E5%B1%B1%E6%9A%96%E8%88%8D%E5%B1%B1%E6%A0%96%E9%87%8E%E5%A5%A2%E6%B8%A9%E6%B3%89%E6%BA%AF%E6%BA%AA%E6%B0%91%E5%AE%BF%20%E6%83%A0%E5%B7%9E%E5%B8%82%E9%BE%99%E9%97%A8%E5%8E%BF%E6%B0%B8%E6%B1%89%E9%95%87%E9%94%A6%E5%9F%8E%E6%9D%91%E5%A7%94%E9%BA%BB%E5%B8%83%E5%9D%91%E5%B0%BE%E7%8E%8B%E6%B0%8F%E4%B8%80%E5%B8%A6&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="广州" data-search="广州 宁舍 la maison sereine 广州市增城区增江街道田心路100号 住宿 广州近郊住宿与度假落脚点，预订前确认房型和入住安排。">
+      <div class="meta"><span>广州</span><span>住宿</span><span class="pending">待确认</span></div>
+      <h2>宁舍 La Maison Sereine</h2>
+      <p class="address">广州市增城区增江街道田心路100号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>广州近郊住宿与度假落脚点，预订前确认房型和入住安排。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%AE%81%E8%88%8D%20La%20Maison%20Sereine%20%E5%B9%BF%E5%B7%9E%E5%B8%82%E5%A2%9E%E5%9F%8E%E5%8C%BA%E5%A2%9E%E6%B1%9F%E8%A1%97%E9%81%93%E7%94%B0%E5%BF%83%E8%B7%AF100%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="广州" data-search="广州 广州瑰丽酒店 广州市天河区珠江东路6号广州周大福金融中心 住宿 珠江新城高层景观酒店，可作为住宿、餐饮或高空景观体验。">
+      <div class="meta"><span>广州</span><span>住宿</span><span class="pending">待确认</span></div>
+      <h2>广州瑰丽酒店</h2>
+      <p class="address">广州市天河区珠江东路6号广州周大福金融中心</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>珠江新城高层景观酒店，可作为住宿、餐饮或高空景观体验。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%B9%BF%E5%B7%9E%E7%91%B0%E4%B8%BD%E9%85%92%E5%BA%97%20%E5%B9%BF%E5%B7%9E%E5%B8%82%E5%A4%A9%E6%B2%B3%E5%8C%BA%E7%8F%A0%E6%B1%9F%E4%B8%9C%E8%B7%AF6%E5%8F%B7%E5%B9%BF%E5%B7%9E%E5%91%A8%E5%A4%A7%E7%A6%8F%E9%87%91%E8%9E%8D%E4%B8%AD%E5%BF%83&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="拉萨" data-search="拉萨 拉萨山也民宿（布达拉宫店） 拉萨市城关区鲁固菜地48—54号一带 住宿 靠近布达拉宫片区的旅行住宿，预订前确认高原入住需求与具体房型。">
+      <div class="meta"><span>拉萨</span><span>住宿</span><span class="pending">待确认</span></div>
+      <h2>拉萨山也民宿（布达拉宫店）</h2>
+      <p class="address">拉萨市城关区鲁固菜地48—54号一带</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>靠近布达拉宫片区的旅行住宿，预订前确认高原入住需求与具体房型。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E6%8B%89%E8%90%A8%E5%B1%B1%E4%B9%9F%E6%B0%91%E5%AE%BF%EF%BC%88%E5%B8%83%E8%BE%BE%E6%8B%89%E5%AE%AB%E5%BA%97%EF%BC%89%20%E6%8B%89%E8%90%A8%E5%B8%82%E5%9F%8E%E5%85%B3%E5%8C%BA%E9%B2%81%E5%9B%BA%E8%8F%9C%E5%9C%B048%E2%80%9454%E5%8F%B7%E4%B8%80%E5%B8%A6&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="顺德" data-search="顺德 顺德万象汇 佛山市顺德区大良街道驹荣路与东乐路交叉口 商圈娱乐 购物、餐饮与休息补给商圈，适合作为顺德路线的集合点。">
+      <div class="meta"><span>顺德</span><span>商圈娱乐</span><span class="pending">待确认</span></div>
+      <h2>顺德万象汇</h2>
+      <p class="address">佛山市顺德区大良街道驹荣路与东乐路交叉口</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>购物、餐饮与休息补给商圈，适合作为顺德路线的集合点。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%A1%BA%E5%BE%B7%E4%B8%87%E8%B1%A1%E6%B1%87%20%E4%BD%9B%E5%B1%B1%E5%B8%82%E9%A1%BA%E5%BE%B7%E5%8C%BA%E5%A4%A7%E8%89%AF%E8%A1%97%E9%81%93%E9%A9%B9%E8%8D%A3%E8%B7%AF%E4%B8%8E%E4%B8%9C%E4%B9%90%E8%B7%AF%E4%BA%A4%E5%8F%89%E5%8F%A3&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·南城" data-search="东莞·南城 德汇嘉里广场 东莞市南城街道鸿福西路80号 商圈娱乐 南城商圈，可结合周边餐厅、咖啡和夜生活安排。">
+      <div class="meta"><span>东莞·南城</span><span>商圈娱乐</span><span class="pending">待确认</span></div>
+      <h2>德汇嘉里广场</h2>
+      <p class="address">东莞市南城街道鸿福西路80号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>南城商圈，可结合周边餐厅、咖啡和夜生活安排。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E5%BE%B7%E6%B1%87%E5%98%89%E9%87%8C%E5%B9%BF%E5%9C%BA%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E5%8D%97%E5%9F%8E%E8%A1%97%E9%81%93%E9%B8%BF%E7%A6%8F%E8%A5%BF%E8%B7%AF80%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="广州" data-search="广州 通利国际时尚港 广州市白云区石潭西路118号 商圈娱乐 服装时尚与商业目的地，适合作为白云区逛街路线节点。">
+      <div class="meta"><span>广州</span><span>商圈娱乐</span><span class="pending">待确认</span></div>
+      <h2>通利国际时尚港</h2>
+      <p class="address">广州市白云区石潭西路118号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>服装时尚与商业目的地，适合作为白云区逛街路线节点。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%80%9A%E5%88%A9%E5%9B%BD%E9%99%85%E6%97%B6%E5%B0%9A%E6%B8%AF%20%E5%B9%BF%E5%B7%9E%E5%B8%82%E7%99%BD%E4%BA%91%E5%8C%BA%E7%9F%B3%E6%BD%AD%E8%A5%BF%E8%B7%AF118%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·石排" data-search="东莞·石排 中国潮玩之都·漫博中心（石排潮玩产业园） 东莞市石排镇东园大道石排段321—323号 商圈娱乐 潮玩产业、展览与打卡目的地；展期和开放安排出发前确认。">
+      <div class="meta"><span>东莞·石排</span><span>商圈娱乐</span><span class="pending">待确认</span></div>
+      <h2>中国潮玩之都·漫博中心（石排潮玩产业园）</h2>
+      <p class="address">东莞市石排镇东园大道石排段321—323号</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>潮玩产业、展览与打卡目的地；展期和开放安排出发前确认。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E4%B8%AD%E5%9B%BD%E6%BD%AE%E7%8E%A9%E4%B9%8B%E9%83%BD%C2%B7%E6%BC%AB%E5%8D%9A%E4%B8%AD%E5%BF%83%EF%BC%88%E7%9F%B3%E6%8E%92%E6%BD%AE%E7%8E%A9%E4%BA%A7%E4%B8%9A%E5%9B%AD%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E7%9F%B3%E6%8E%92%E9%95%87%E4%B8%9C%E5%9B%AD%E5%A4%A7%E9%81%93%E7%9F%B3%E6%8E%92%E6%AE%B5321%E2%80%94323%E5%8F%B7&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="深圳" data-search="深圳 play x 娱乐街区（深圳） 深圳市福田区福华一路3号领展中心城西广场一带 商圈娱乐 城市娱乐与夜间活动街区，具体项目和营业安排以现场公示为准。">
+      <div class="meta"><span>深圳</span><span>商圈娱乐</span><span class="pending">待确认</span></div>
+      <h2>PLAY X 娱乐街区（深圳）</h2>
+      <p class="address">深圳市福田区福华一路3号领展中心城西广场一带</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>城市娱乐与夜间活动街区，具体项目和营业安排以现场公示为准。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=PLAY%20X%20%E5%A8%B1%E4%B9%90%E8%A1%97%E5%8C%BA%EF%BC%88%E6%B7%B1%E5%9C%B3%EF%BC%89%20%E6%B7%B1%E5%9C%B3%E5%B8%82%E7%A6%8F%E7%94%B0%E5%8C%BA%E7%A6%8F%E5%8D%8E%E4%B8%80%E8%B7%AF3%E5%8F%B7%E9%A2%86%E5%B1%95%E4%B8%AD%E5%BF%83%E5%9F%8E%E8%A5%BF%E5%B9%BF%E5%9C%BA%E4%B8%80%E5%B8%A6&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="东莞·道滘" data-search="东莞·道滘 领派 party ktv（道滘店） 东莞市道滘镇闸口振兴北一路2号之一3楼 商圈娱乐 ktv 与聚会娱乐场所；包厢、最低消费和营业时段需提前确认。">
+      <div class="meta"><span>东莞·道滘</span><span>商圈娱乐</span><span class="pending">待确认</span></div>
+      <h2>领派 PARTY KTV（道滘店）</h2>
+      <p class="address">东莞市道滘镇闸口振兴北一路2号之一3楼</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>KTV 与聚会娱乐场所；包厢、最低消费和营业时段需提前确认。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E9%A2%86%E6%B4%BE%20PARTY%20KTV%EF%BC%88%E9%81%93%E6%BB%98%E5%BA%97%EF%BC%89%20%E4%B8%9C%E8%8E%9E%E5%B8%82%E9%81%93%E6%BB%98%E9%95%87%E9%97%B8%E5%8F%A3%E6%8C%AF%E5%85%B4%E5%8C%97%E4%B8%80%E8%B7%AF2%E5%8F%B7%E4%B9%8B%E4%B8%803%E6%A5%BC&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="首尔" data-search="首尔 g2 hotel myeongdong 韩国首尔中区水标路24号一带 住宿 明洞住宿与首尔行程出发点，预订时核对房型和交通路线。">
+      <div class="meta"><span>首尔</span><span>住宿</span><span class="pending">待确认</span></div>
+      <h2>G2 Hotel Myeongdong</h2>
+      <p class="address">韩国首尔中区水标路24号一带</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>明洞住宿与首尔行程出发点，预订时核对房型和交通路线。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=G2%20Hotel%20Myeongdong%20%E9%9F%A9%E5%9B%BD%E9%A6%96%E5%B0%94%E4%B8%AD%E5%8C%BA%E6%B0%B4%E6%A0%87%E8%B7%AF24%E5%8F%B7%E4%B8%80%E5%B8%A6&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article>
+<article data-region="釜山" data-search="釜山 蓝色故事酒店（釜山，具体门店待确认） 韩国釜山海云台区（完整英文店名与门牌待确认） 住宿 釜山路线中的住宿落脚点；同名匹配不足，预订前必须核对订单上的英文名和地址。">
+      <div class="meta"><span>釜山</span><span>住宿</span><span class="pending">待确认</span></div>
+      <h2>蓝色故事酒店（釜山，具体门店待确认）</h2>
+      <p class="address">韩国釜山海云台区（完整英文店名与门牌待确认）</p>
+      <dl>
+        <div><dt>营业</dt><dd>待核实（出发前查看地图最新公示）</dd></div>
+        <div><dt>推荐</dt><dd>釜山路线中的住宿落脚点；同名匹配不足，预订前必须核对订单上的英文名和地址。</dd></div>
+      </dl>
+      <a href="https://uri.amap.com/search?keyword=%E8%93%9D%E8%89%B2%E6%95%85%E4%BA%8B%E9%85%92%E5%BA%97%EF%BC%88%E9%87%9C%E5%B1%B1%EF%BC%8C%E5%85%B7%E4%BD%93%E9%97%A8%E5%BA%97%E5%BE%85%E7%A1%AE%E8%AE%A4%EF%BC%89%20%E9%9F%A9%E5%9B%BD%E9%87%9C%E5%B1%B1%E6%B5%B7%E4%BA%91%E5%8F%B0%E5%8C%BA%EF%BC%88%E5%AE%8C%E6%95%B4%E8%8B%B1%E6%96%87%E5%BA%97%E5%90%8D%E4%B8%8E%E9%97%A8%E7%89%8C%E5%BE%85%E7%A1%AE%E8%AE%A4%EF%BC%89&view=map&callnative=1" target="_blank" rel="noreferrer">在高德地图搜索</a>
+    </article></main>
+  <footer>公开浏览版 · “待确认”表示尚未找到足够新的公开营业证据，出发前请查看地图或联系门店。</footer>
+  <script>
+    const q=document.querySelector('#query'),r=document.querySelector('#region'),cards=[...document.querySelectorAll('article')],count=document.querySelector('#count');
+    function filter(){const n=q.value.trim().toLowerCase(),region=r.value;let visible=0;for(const card of cards){const show=(!n||card.dataset.search.includes(n))&&(!region||card.dataset.region===region);card.hidden=!show;if(show)visible++}count.textContent='显示 '+visible+' 个地点'}
+    q.addEventListener('input',filter,{passive:true});r.addEventListener('change',filter);
+  </script>
+</body>
+</html>
